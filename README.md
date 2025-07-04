@@ -34,3 +34,17 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Tasarım ve Dosya Yapısı
+
+- Tüm ana renkler ve fontlar `tailwind.config.js` ve `src/app/globals.css` dosyalarında merkezi olarak yönetilir.
+- `src/styles/` klasörü, projeye özel yardımcı CSS veya Tailwind utility dosyalarını barındırır.
+- Bileşenler, `src/components/` altında mantıksal olarak bölümlere ayrılmıştır (ör. `home`, `layout`).
+- Sayfa ve layout dosyaları `src/app/` altında bulunur.
+
+### Renk ve Font Yönetimi
+
+- Ana renkler: `primary` (#6366F1), `secondary` (#A21CAF), `accent` (#06B6D4)
+- Font ailesi: Geist Sans, Inter, Arial, sans-serif
+
+Tasarımda tutarlılık için tüm başlıklar, butonlar ve linkler merkezi değişkenler üzerinden yönetilir.
