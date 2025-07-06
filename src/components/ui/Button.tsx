@@ -17,15 +17,13 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const baseStyles =
-  "group relative font-semibold flex items-center justify-center overflow-hidden transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500/50 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed";
+  "group relative font-semibold flex items-center justify-center overflow-hidden transition-all duration-300 focus:outline-none cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed";
 
 const variantStyles: Record<ButtonVariant, string> = {
-  gradient:
-    "bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white hover:shadow-2xl hover:shadow-purple-500/25 hover:-translate-y-2",
-  outline:
-    "border-2 border-blue-500/40 bg-white text-blue-700 hover:border-blue-700 hover:text-blue-800 hover:bg-blue-50 hover:shadow-md hover:-translate-y-1 focus:ring-2 focus:ring-blue-200",
-  solid: "bg-blue-600 text-white hover:bg-blue-700",
-  ghost: "bg-transparent text-blue-600 hover:bg-blue-50",
+  gradient: "btn-gradient hover:shadow-2xl hover:-translate-y-2",
+  outline: "btn-outline hover:shadow-md hover:-translate-y-1",
+  solid: "btn-primary hover:shadow-md hover:-translate-y-1",
+  ghost: "btn-ghost hover:shadow-sm",
 };
 
 const sizeStyles: Record<ButtonSize, string> = {
@@ -71,6 +69,8 @@ const Button: React.FC<ButtonProps> = ({
       disabled={isDisabled}
       aria-label={ariaLabel}
       aria-busy={loading}
+      onFocus={(e) => e.target.classList.add("btn-focus")}
+      onBlur={(e) => e.target.classList.remove("btn-focus")}
       {...rest}
     >
       {content}
