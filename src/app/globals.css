@@ -2,31 +2,28 @@
 
 /* === Core Theme System === */
 :root {
-  /* Base colors */
   --color-white: #ffffff;
   --color-black: #000000;
 
-  /* Core Theme Colors - Single source of truth */
   --color-bg: #ffffff;
   --color-text: #171717;
-  --color-primary: #1d4ed8; /* blue-700 */
-  --color-primary-hover: #1e40af; /* blue-800 */
-  --color-secondary: #7c3aed; /* purple-700 */
-  --color-accent: #ec4899; /* pink-500 */
+  --color-primary: #1d4ed8;
+  --color-primary-hover: #1e40af;
+  --color-secondary: #7c3aed;
+  --color-accent: #ec4899;
 
-  /* Semantic Colors */
-  --color-muted: #6b7280; /* gray-500 */
-  --color-border: #e5e7eb; /* gray-200 */
-  --color-input: #f9fafb; /* gray-50 */
-  --color-ring: rgba(59, 130, 246, 0.5); /* blue-500/50 */
+  --color-muted: #6b7280;
+  --color-border: #e5e7eb;
+  --color-input: #f9fafb;
+  --color-ring: rgba(59, 130, 246, 0.5);
+  --color-emphasis: #0f172a;
 
-  /* Global Button System */
   --btn-primary-bg: var(--color-primary);
   --btn-primary-bg-hover: var(--color-primary-hover);
   --btn-primary-text: var(--color-white);
 
   --btn-secondary-bg: var(--color-secondary);
-  --btn-secondary-bg-hover: #6d28d9; /* purple-800 */
+  --btn-secondary-bg-hover: #6d28d9;
   --btn-secondary-text: var(--color-white);
 
   --btn-outline-bg: transparent;
@@ -37,14 +34,12 @@
   --btn-outline-border-hover: var(--color-primary-hover);
 
   --btn-ghost-bg: transparent;
-  --btn-ghost-bg-hover: #f8fafc; /* slate-50 */
+  --btn-ghost-bg-hover: #f8fafc;
   --btn-ghost-text: var(--color-primary);
   --btn-ghost-text-hover: var(--color-primary-hover);
 
-  /* Focus ring color */
   --focus-ring-color: var(--color-ring);
 
-  /* Global Gradient System */
   --gradient-primary: linear-gradient(
     to right,
     var(--color-primary),
@@ -53,11 +48,9 @@
   );
   --gradient-shadow: rgba(147, 51, 234, 0.25);
 
-  /* Typography */
   --font-sans: "Geist Sans", system-ui, sans-serif;
   --font-mono: "Geist Mono", monospace;
 
-  /* Global Spacing */
   --space-xs: 0.5rem;
   --space-sm: 0.75rem;
   --space-md: 1rem;
@@ -68,49 +61,95 @@
   --space-4xl: 4rem;
   --space-5xl: 5rem;
 
-  /* Global Radius */
   --radius-sm: 0.5rem;
   --radius-md: 0.75rem;
   --radius-lg: 1rem;
   --radius-xl: 1.5rem;
   --radius-2xl: 2rem;
 
-  /* Global Shadows */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
   --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
 
-  /* Global Animation */
   --transition-fast: 0.2s ease-out;
   --transition-normal: 0.3s ease-in-out;
 }
 
-/* === Tailwind v4 Theme Injection === */
-@theme inline {
-  --color-background: var(--color-bg);
-  --color-foreground: var(--color-text);
-  --color-primary: var(--color-primary);
-  --color-secondary: var(--color-secondary);
-  --color-accent: var(--color-accent);
-  --color-muted: var(--color-muted);
-  --color-border: var(--color-border);
+/* === Custom Tailwind CSS Utility Classes === */
+@layer utilities {
+  .text-color-primary {
+    color: var(--color-primary);
+  }
+  .text-color-secondary {
+    color: var(--color-secondary);
+  }
+  .text-color-accent {
+    color: var(--color-accent);
+  }
+  .text-color-muted {
+    color: var(--color-muted);
+  }
+  .text-color-border {
+    color: var(--color-border);
+  }
+  .text-color-bg {
+    color: var(--color-bg);
+  }
+  .text-color-emphasis {
+    color: var(--color-emphasis);
+  }
 
-  --font-sans: var(--font-sans);
-  --font-mono: var(--font-mono);
+  .bg-color-primary {
+    background-color: var(--color-primary);
+  }
+  .bg-color-secondary {
+    background-color: var(--color-secondary);
+  }
+  .bg-color-accent {
+    background-color: var(--color-accent);
+  }
+  .bg-color-muted {
+    background-color: var(--color-muted);
+  }
+  .bg-color-border {
+    background-color: var(--color-border);
+  }
+  .bg-color-bg {
+    background-color: var(--color-bg);
+  }
 
-  --spacing-xs: var(--space-xs);
-  --spacing-sm: var(--space-sm);
-  --spacing-md: var(--space-md);
-  --spacing-lg: var(--space-lg);
-  --spacing-xl: var(--space-xl);
+  /* hero */
+  .bg-gradient-hero {
+    background: linear-gradient(
+      135deg,
+      var(--color-bg) 0%,
+      var(--color-input) 40%,
+      var(--color-border) 100%
+    );
+  }
 
-  --radius-sm: var(--radius-sm);
-  --radius-md: var(--radius-md);
-  --radius-lg: var(--radius-lg);
-  --radius-xl: var(--radius-xl);
-  --radius-2xl: var(--radius-2xl);
+  .bg-gradient-pattern {
+    background: radial-gradient(
+        circle at 25% 25%,
+        var(--color-primary) 0%,
+        transparent 50%
+      ),
+      radial-gradient(circle at 75% 75%, var(--color-secondary) 0%, transparent 50%);
+  }
+
+  .bg-gradient-to-br-primary {
+    background: linear-gradient(
+      to bottom right,
+      var(--color-bg) 0%,
+      color-mix(in srgb, var(--color-primary) 10%, transparent) 100%
+    );
+  }
+
+  .section-header-text-color {
+    background: "from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent";
+  }
 }
 
 /* === Global Base Styles === */
@@ -177,7 +216,6 @@ body {
   box-shadow: 0 0 0 2px var(--focus-ring-color);
 }
 
-/* === Global Utility Classes === */
 .shadow-gradient {
   box-shadow: 0 25px 50px -12px var(--gradient-shadow);
 }

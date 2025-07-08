@@ -3,6 +3,7 @@ import { Phone, Mail, Sparkles, Zap, MessageCircle } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import Badge from "../ui/Badge";
 import Button from "../ui/Button";
+import SectionHeader from "../ui/SectionHeader";
 
 type InfoCard = {
   icon: LucideIcon;
@@ -55,18 +56,13 @@ const CTASection = () => (
         className="mx-auto mb-6"
       />
 
-      <h2 className="mb-6 text-4xl font-bold tracking-tight text-white md:text-6xl">
-        Projenizi{" "}
-        <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-          Hayata Geçirmeye
-        </span>{" "}
-        Hazır mısınız?
-      </h2>
-
-      <p className="mx-auto mb-12 max-w-2xl text-lg text-blue-100">
-        Hayalinizdeki web sitesini gerçeğe dönüştürmek için uzman ekibimizle tanışın.
-        Ücretsiz konsültasyonda projenizi planlayalım.
-      </p>
+      <SectionHeader
+        title="Projenizi"
+        titleGradient="Hayata Geçirmeye"
+        titleAfterGradient="Hazır mısınız?"
+        description="Hayalinizdeki web sitesini gerçeğe dönüştürmek için uzman ekibimizle tanışın. Ücretsiz konsültasyonda projenizi planlayalım."
+        className="text-white"
+      />
 
       {/* CTA buttons */}
       <div className="flex flex-col sm:flex-row gap-4 mb-20 items-center justify-center">

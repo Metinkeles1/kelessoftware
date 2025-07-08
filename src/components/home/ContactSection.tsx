@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import Button from "../ui/Button";
 import Badge from "../ui/Badge";
+import SectionHeader from "../ui/SectionHeader";
 
 const ContactSection: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -52,53 +53,48 @@ const ContactSection: React.FC = () => {
 
   const contactInfo = [
     {
-      icon: <Phone className="w-5 h-5" />,
+      icon: <Phone className="w-5 h-5 text-[var(--color-primary)]" />,
       title: "Telefon",
       value: "+90 212 123 45 67",
-      color: "bg-blue-100 text-blue-600",
+      color: "bg-[var(--color-primary)]/10 text-[var(--color-primary)]",
     },
     {
-      icon: <Mail className="w-5 h-5" />,
+      icon: <Mail className="w-5 h-5 text-[var(--color-secondary)]" />,
       title: "E-posta",
       value: "info@example.com",
-      color: "bg-purple-100 text-purple-600",
+      color: "bg-[var(--color-secondary)]/10 text-[var(--color-secondary)]",
     },
     {
-      icon: <MapPin className="w-5 h-5" />,
+      icon: <MapPin className="w-5 h-5 text-[var(--color-success,#10b981)]" />,
       title: "Lokasyon",
       value: "İstanbul, Türkiye",
-      color: "bg-green-100 text-green-600",
+      color: "bg-[var(--color-success,#10b981)]/10 text-[var(--color-success,#10b981)]",
     },
     {
-      icon: <Clock className="w-5 h-5" />,
+      icon: <Clock className="w-5 h-5 text-[var(--color-warning,#f59e0b)]" />,
       title: "Çalışma Saatleri",
       value: "09:00 - 18:00",
-      color: "bg-orange-100 text-orange-600",
+      color: "bg-[var(--color-warning,#f59e0b)]/10 text-[var(--color-warning,#f59e0b)]",
     },
   ];
 
   return (
     <section
       id="contact"
-      className="relative isolate overflow-hidden bg-gradient-to-br from-white to-blue-50 py-28"
+      className="relative isolate overflow-hidden bg-gradient-to-br from-[var(--color-bg)] to-[var(--color-primary)]/10 py-28"
     >
       <div className="container mx-auto relative px-6">
         {/* Header */}
         <div className="text-center mb-16">
           <Badge
-            icon={<Sparkles size={16} className="text-yellow-500" />}
+            icon={<Sparkles size={16} className="text-[var(--color-accent)]" />}
             text="İletişim"
-            bgClassName="bg-white border border-gray-200 backdrop-blur"
-            textClassName="text-gray-700"
+            bgClassName="bg-[var(--color-bg)] border border-[var(--color-border)] backdrop-blur"
+            textClassName="text-[var(--color-text)]"
             className="mx-auto mb-6"
           />
 
-          <h2 className="mb-6 text-4xl font-bold tracking-tight text-gray-900 md:text-6xl">
-            Projeleriniz İçin{" "}
-            <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
-              Bize Ulaşın
-            </span>
-          </h2>
+          <SectionHeader title="Projeleriniz İçin" titleGradient="Bize Ulaşın" />
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
@@ -107,7 +103,7 @@ const ContactSection: React.FC = () => {
             {contactInfo.map((info, index) => (
               <div
                 key={index}
-                className="group rounded-2xl border border-gray-200 bg-white p-6 shadow-md transition-all duration-300 hover:bg-gray-50 hover:-translate-y-1"
+                className="group rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg)] p-6 shadow-md transition-all duration-300 hover:bg-[var(--color-muted)]/10 hover:-translate-y-1"
               >
                 <div className="flex items-center gap-4">
                   <div
@@ -116,17 +112,19 @@ const ContactSection: React.FC = () => {
                     {info.icon}
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900">{info.title}</h4>
-                    <p className="text-sm text-gray-600">{info.value}</p>
+                    <h4 className="font-semibold text-[var(--color-text)]">
+                      {info.title}
+                    </h4>
+                    <p className="text-sm text-[var(--color-muted)]">{info.value}</p>
                   </div>
                 </div>
               </div>
             ))}
 
             {/* Quick Info */}
-            <div className="rounded-2xl border border-gray-200 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 p-6 text-white">
+            <div className="rounded-2xl border border-[var(--color-border)] bg-gradient-to-r from-[var(--color-primary)] via-[var(--color-secondary)] to-[var(--color-accent)] p-6 text-[var(--color-bg)]">
               <div className="flex items-center gap-2 mb-2">
-                <Globe className="w-5 h-5" />
+                <Globe className="w-5 h-5 text-[var(--color-bg)]" />
                 <h4 className="font-bold">Hızlı Yanıt</h4>
               </div>
               <p className="text-sm opacity-90">

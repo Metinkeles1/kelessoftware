@@ -13,6 +13,7 @@ import {
 import Button from "../ui/Button";
 import Image from "next/image";
 import Badge from "../ui/Badge";
+import SectionHeader from "../ui/SectionHeader";
 
 interface Project {
   id: number;
@@ -38,9 +39,9 @@ const PortfolioSection: React.FC = () => {
       description:
         "Modern e-ticaret çözümü ile kapsamlı online satış platformu geliştirdik.",
       technologies: ["React", "Node.js", "MongoDB"],
-      color: "text-pink-600",
-      bgColor: "bg-pink-50",
-      icon: <ShoppingCart className="w-6 h-6" />,
+      color: "text-[var(--color-accent)]",
+      bgColor: "bg-[var(--color-accent)]/10",
+      icon: <ShoppingCart className="w-6 h-6 text-[var(--color-accent)]" />,
       image:
         "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=300&fit=crop",
       features: ["Ödeme Sistemi", "Mobil Uyumlu"],
@@ -52,9 +53,9 @@ const PortfolioSection: React.FC = () => {
       description:
         "Profesyonel kurumsal kimlik ve kullanıcı deneyimi odaklı arayüz tasarımı.",
       technologies: ["Next.js", "TypeScript", "Tailwind"],
-      color: "text-blue-600",
-      bgColor: "bg-blue-50",
-      icon: <Building className="w-6 h-6" />,
+      color: "text-[var(--color-primary)]",
+      bgColor: "bg-[var(--color-primary)]/10",
+      icon: <Building className="w-6 h-6 text-[var(--color-primary)]" />,
       image:
         "https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&h=300&fit=crop",
       features: ["CMS Entegrasyonu", "SEO Optimizasyonu"],
@@ -65,9 +66,9 @@ const PortfolioSection: React.FC = () => {
       category: "Blog",
       description: "Gelişmiş içerik yönetimi ve SEO optimizasyonu ile blog platformu.",
       technologies: ["WordPress", "PHP", "MySQL"],
-      color: "text-green-600",
-      bgColor: "bg-green-50",
-      icon: <BookOpen className="w-6 h-6" />,
+      color: "text-[var(--color-success,#10b981)]",
+      bgColor: "bg-[var(--color-success,#10b981)]/10",
+      icon: <BookOpen className="w-6 h-6 text-[var(--color-success,#10b981)]" />,
       image:
         "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=400&h=300&fit=crop",
       features: ["Editör Arayüzü", "Yorum Sistemi"],
@@ -78,9 +79,9 @@ const PortfolioSection: React.FC = () => {
       category: "Portföy",
       description: "Kişisel marka ve portföy sunumu için özel tasarlanmış modern site.",
       technologies: ["Vue.js", "Nuxt", "SCSS"],
-      color: "text-purple-600",
-      bgColor: "bg-purple-50",
-      icon: <User className="w-6 h-6" />,
+      color: "text-[var(--color-secondary)]",
+      bgColor: "bg-[var(--color-secondary)]/10",
+      icon: <User className="w-6 h-6 text-[var(--color-secondary)]" />,
       image:
         "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop",
       features: ["Animasyonlar", "Galeri Sistemi"],
@@ -90,24 +91,19 @@ const PortfolioSection: React.FC = () => {
   return (
     <section
       id="portfolio"
-      className="relative isolate overflow-hidden bg-gradient-to-br from-white to-blue-50 py-28"
+      className="relative isolate overflow-hidden bg-gradient-to-br from-[var(--color-bg)] to-[var(--color-primary)]/10 py-28"
     >
       <div className="container mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-12">
           <Badge
-            icon={<Palette className="text-blue-600" />}
+            icon={<Palette className="text-[var(--color-primary)]" />}
             text="Başarılı Projeler"
-            bgClassName="bg-gray-100"
-            textClassName="text-gray-700"
+            bgClassName="bg-[var(--color-bg)]"
+            textClassName="text-[var(--color-text)]"
           />
 
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 ">
-            Öne Çıkan{" "}
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              Portföyümüz
-            </span>
-          </h2>
+          <SectionHeader title="Öne Çıkan" titleGradient="Portföyümüz" />
         </div>
 
         {/* Portfolio Grid */}
@@ -120,8 +116,8 @@ const PortfolioSection: React.FC = () => {
               onMouseLeave={() => setHoveredIndex(null)}
             >
               <div
-                className={`bg-white border border-gray-200 rounded-2xl overflow-hidden h-full transition-all duration-300 hover:border-gray-300 hover:shadow-xl hover:-translate-y-2 ${
-                  hoveredIndex === index ? "scale-105 shadow-2xl" : ""
+                className={`bg-[var(--color-bg)] border border-[var(--color-border)] rounded-2xl overflow-hidden h-full transition-all duration-300 hover:border-[var(--color-primary)] hover:shadow-xl hover:-translate-y-2 ${
+                  hoveredIndex === index ? "scale-105 shadow-xl" : ""
                 }`}
               >
                 {/* Project Image - Increased Height */}
@@ -139,17 +135,17 @@ const PortfolioSection: React.FC = () => {
 
                   {/* Category Badge */}
                   <div className="absolute top-4 left-4">
-                    <span
+                    <div
                       className={`inline-flex items-center px-3 py-1.5 rounded-full text-xs font-semibold ${project.bgColor} ${project.color} backdrop-blur-sm`}
                     >
                       {project.category}
-                    </span>
+                    </div>
                   </div>
 
                   {/* Icon */}
                   <div className="absolute top-4 right-4">
                     <div
-                      className={`w-12 h-12 ${project.bgColor} rounded-xl flex items-center justify-center backdrop-blur-sm border border-white/20`}
+                      className={`w-12 h-12 ${project.bgColor} rounded-xl flex items-center justify-center backdrop-blur-sm border border-[var(--color-bg)]/20`}
                     >
                       <div className={project.color}>{project.icon}</div>
                     </div>
@@ -157,14 +153,16 @@ const PortfolioSection: React.FC = () => {
 
                   {/* Title on Image */}
                   <div className="absolute bottom-4 left-4 right-4">
-                    <h3 className="text-xl font-bold text-white mb-1">{project.title}</h3>
+                    <h3 className="text-xl font-bold text-[var(--color-bg)] mb-1">
+                      {project.title}
+                    </h3>
                   </div>
                 </div>
 
                 {/* Content - Reduced */}
                 <div className="p-6 space-y-4">
                   <div>
-                    <p className="text-gray-600 leading-relaxed text-sm">
+                    <p className="text-[var(--color-muted)] leading-relaxed text-sm">
                       {project.description}
                     </p>
                   </div>
@@ -174,7 +172,9 @@ const PortfolioSection: React.FC = () => {
                     {project.features.map((feature, featureIndex) => (
                       <div key={featureIndex} className="flex items-center gap-1.5">
                         <CheckCircle className={`w-3 h-3 ${project.color}`} />
-                        <span className="text-xs text-gray-600">{feature}</span>
+                        <span className="text-xs text-[var(--color-muted)]">
+                          {feature}
+                        </span>
                       </div>
                     ))}
                   </div>
@@ -184,7 +184,7 @@ const PortfolioSection: React.FC = () => {
                     {project.technologies.map((tech, techIndex) => (
                       <span
                         key={techIndex}
-                        className="inline-flex items-center px-2.5 py-1 bg-gray-100 text-gray-600 rounded-lg text-xs font-medium"
+                        className="inline-flex items-center px-2.5 py-1 bg-[var(--color-muted)]/10 text-[var(--color-muted)] rounded-lg text-xs font-medium"
                       >
                         {tech}
                       </span>
@@ -192,13 +192,13 @@ const PortfolioSection: React.FC = () => {
                   </div>
 
                   {/* CTA */}
-                  <div className="pt-4 border-t border-gray-100">
+                  <div className="pt-4 border-t border-[var(--color-border)]">
                     <Button
                       variant="outline"
                       size="sm"
-                      icon={<Eye className="w-4 h-4" />}
+                      icon={<Eye className="w-4 h-4 text-[var(--color-primary)]" />}
                       iconPosition="right"
-                      className="w-full group-hover:border-blue-300 group-hover:text-blue-600 transition-colors"
+                      className="w-full group-hover:border-[var(--color-primary)] group-hover:text-[var(--color-primary)] transition-colors"
                     >
                       <span className="text-sm font-medium">Projeyi İncele</span>
                     </Button>
@@ -214,7 +214,7 @@ const PortfolioSection: React.FC = () => {
           <Button
             variant="gradient"
             size="lg"
-            icon={<ExternalLink className="w-5 h-5" />}
+            icon={<ExternalLink className="w-5 h-5 text-[var(--color-primary)]" />}
             iconPosition="right"
           >
             Tüm Projeleri Görüntüle

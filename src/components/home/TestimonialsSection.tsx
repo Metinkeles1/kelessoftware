@@ -4,6 +4,7 @@ import React, { FC, useState } from "react";
 import { Star, Quote, Sparkles } from "lucide-react";
 import Image from "next/image";
 import Badge from "../ui/Badge";
+import SectionHeader from "../ui/SectionHeader";
 
 /* -------------------------------------------------------------------------- */
 /* Types & Static Data                                                        */
@@ -90,24 +91,19 @@ const TestimonialsSection: FC = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <section className="relative isolate overflow-hidden bg-gradient-to-br from-white to-blue-50 py-28">
+    <section className="relative isolate overflow-hidden bg-gradient-to-br from-[var(--color-bg)] to-[var(--color-primary)]/10 py-28">
       <div className="container mx-auto relative px-6">
         {/* Header */}
         <div className="text-center mb-12">
           <Badge
-            icon={<Sparkles size={16} className="text-yellow-500" />}
+            icon={<Sparkles size={16} className="text-[var(--color-accent)]" />}
             text="Müşteri Yorumları"
-            bgClassName="bg-white border border-gray-200 backdrop-blur"
-            textClassName="text-gray-700"
+            bgClassName="bg-[var(--color-bg)] border border-[var(--color-border)] backdrop-blur"
+            textClassName="text-[var(--color-text)]"
             className="mx-auto mb-6"
           />
 
-          <h2 className="mb-6 text-4xl font-bold tracking-tight text-gray-900 md:text-6xl">
-            Müşteri{" "}
-            <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
-              Deneyimleri
-            </span>
-          </h2>
+          <SectionHeader title="Müşteri" titleGradient="Deneyimleri" />
         </div>
 
         {/* Testimonials Grid */}
@@ -120,29 +116,32 @@ const TestimonialsSection: FC = () => {
               onMouseLeave={() => setHoveredIndex(null)}
             >
               <div
-                className={`rounded-2xl border border-gray-200 bg-white p-6 shadow-md transition-all duration-300 hover:bg-gray-50 hover:-translate-y-1 h-full flex flex-col ${
-                  hoveredIndex === index ? "scale-105 shadow-xl shadow-blue-200/40" : ""
+                className={`rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg)] p-6 shadow-md transition-all duration-300 hover:bg-[var(--color-muted)]/10 hover:-translate-y-1 h-full flex flex-col ${
+                  hoveredIndex === index ? "scale-105 shadow-xl" : ""
                 }`}
               >
                 {/* Quote Icon */}
-                <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-blue-100 text-blue-600 mb-4">
+                <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-[var(--color-primary)]/10 text-[var(--color-primary)] mb-4">
                   <Quote className="w-5 h-5" />
                 </div>
 
                 {/* Stars */}
                 <div className="flex mb-4">
                   {Array.from({ length: testimonial.rating }).map((_, idx) => (
-                    <Star key={idx} className="w-4 h-4 text-yellow-500 fill-current" />
+                    <Star
+                      key={idx}
+                      className="w-4 h-4 text-[var(--color-accent)] fill-current"
+                    />
                   ))}
                 </div>
 
                 {/* Text */}
-                <p className="text-gray-700 mb-6 leading-relaxed text-sm flex-grow">
+                <p className="text-[var(--color-text)] mb-6 leading-relaxed text-sm flex-grow">
                   {testimonial.text}
                 </p>
 
                 {/* Author */}
-                <div className="flex items-center pt-4 border-t border-gray-200">
+                <div className="flex items-center pt-4 border-t border-[var(--color-border)]">
                   <Image
                     src={testimonial.avatar}
                     alt={testimonial.name}
@@ -151,10 +150,10 @@ const TestimonialsSection: FC = () => {
                     className="w-10 h-10 rounded-full object-cover mr-3"
                   />
                   <div>
-                    <h4 className="font-semibold text-gray-900 text-sm">
+                    <h4 className="font-semibold text-[var(--color-text)] text-sm">
                       {testimonial.name}
                     </h4>
-                    <p className="text-gray-600 text-xs">
+                    <p className="text-[var(--color-muted)] text-xs">
                       {testimonial.role}, {testimonial.company}
                     </p>
                   </div>

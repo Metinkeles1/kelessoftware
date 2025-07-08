@@ -27,9 +27,9 @@ const variantStyles: Record<ButtonVariant, string> = {
 };
 
 const sizeStyles: Record<ButtonSize, string> = {
-  sm: "px-4 py-3 text-sm rounded-lg",
-  md: "px-6 py-4 text-base rounded-xl",
-  lg: "px-8 py-5 text-lg rounded-2xl",
+  sm: "px-4 py-2 text-sm rounded-lg",
+  md: "px-6 py-3 text-base rounded-xl",
+  lg: "px-8 py-4 text-lg rounded-2xl",
 };
 
 const Button: React.FC<ButtonProps> = ({
@@ -47,21 +47,6 @@ const Button: React.FC<ButtonProps> = ({
 }) => {
   const isDisabled = disabled || loading;
 
-  const content = (
-    <>
-      {icon && iconPosition === "left" && (
-        <span className="mr-2 flex items-center w-5 h-5 text-[16px]">{icon}</span>
-      )}
-      {children && <span>{children}</span>}
-      {icon && iconPosition === "right" && (
-        <span className="ml-2 flex items-center w-5 h-5 text-[16px]">{icon}</span>
-      )}
-      {loading && (
-        <span className="ml-2 animate-spin w-5 h-5 border-2 border-t-transparent border-white rounded-full"></span>
-      )}
-    </>
-  );
-
   return (
     <button
       type={type}
@@ -69,11 +54,23 @@ const Button: React.FC<ButtonProps> = ({
       disabled={isDisabled}
       aria-label={ariaLabel}
       aria-busy={loading}
-      onFocus={(e) => e.target.classList.add("btn-focus")}
-      onBlur={(e) => e.target.classList.remove("btn-focus")}
+      onFocus={(e) => e.currentTarget.classList.add("btn-focus")}
+      onBlur={(e) => e.currentTarget.classList.remove("btn-focus")}
       {...rest}
     >
-      {content}
+      {icon && iconPosition === "left" && (
+        <span className="mr-2 flex items-center w-5 h-5">{icon}</span>
+      )}
+
+      {children && <span>{children}</span>}
+
+      {icon && iconPosition === "right" && (
+        <span className="ml-2 flex items-center w-5 h-5 ">{icon}</span>
+      )}
+
+      {loading && (
+        <span className="ml-2 animate-spin w-5 h-5 border-2 border-t-transparent border-white rounded-full" />
+      )}
     </button>
   );
 };
