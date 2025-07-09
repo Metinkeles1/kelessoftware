@@ -53,10 +53,10 @@ const ContactSection: React.FC = () => {
 
   const contactInfo = [
     {
-      icon: <Phone className="w-5 h-5 text-[var(--color-primary)]" />,
+      icon: <Phone className="w-5 h-5 text-color-primary" />,
       title: "Telefon",
       value: "+90 212 123 45 67",
-      color: "bg-[var(--color-primary)]/10 text-[var(--color-primary)]",
+      color: "bg-color-primary text-color-primary",
     },
     {
       icon: <Mail className="w-5 h-5 text-[var(--color-secondary)]" />,
@@ -79,13 +79,10 @@ const ContactSection: React.FC = () => {
   ];
 
   return (
-    <section
-      id="contact"
-      className="relative isolate overflow-hidden bg-gradient-to-br from-[var(--color-bg)] to-[var(--color-primary)]/10 py-28"
-    >
-      <div className="container mx-auto relative px-6">
+    <section id="contact" className="section-layout bg-gradient-to-br-primary">
+      <div className="container-layout">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="section-header-layout">
           <Badge
             icon={<Sparkles size={16} className="text-[var(--color-accent)]" />}
             text="İletişim"

@@ -91,13 +91,10 @@ const ServicesSection: React.FC = () => {
   ];
 
   return (
-    <section
-      id="services"
-      className="relative isolate overflow-hidden py-28 bg-gradient-to-br-primary"
-    >
-      <div className="container mx-auto relative px-6">
+    <section id="services" className="section-layout bg-gradient-to-br-primary">
+      <div className="container-layout">
         {/* Header */}
-        <div className="text-center mb-12">
+        <div className="section-header-layout">
           <Badge
             icon={<Sparkles size={16} className="text-color-accent" />}
             text="Hizmetlerimiz"

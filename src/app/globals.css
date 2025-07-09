@@ -51,6 +51,7 @@
   --font-sans: "Geist Sans", system-ui, sans-serif;
   --font-mono: "Geist Mono", monospace;
 
+  /* === Layout & Spacing System === */
   --space-xs: 0.5rem;
   --space-sm: 0.75rem;
   --space-md: 1rem;
@@ -60,6 +61,24 @@
   --space-3xl: 3rem;
   --space-4xl: 4rem;
   --space-5xl: 5rem;
+
+  /* Section Spacing */
+  --section-padding-y: 7rem; /* py-28 equivalent */
+  --section-padding-x: 1.5rem; /* px-6 equivalent */
+  --section-margin-bottom: 3rem; /* mb-12 equivalent */
+
+  /* Card Spacing */
+  --card-padding: 1.5rem; /* p-6 equivalent */
+  --card-gap: 1.5rem; /* gap-6 equivalent */
+  --card-gap-lg: 2rem; /* gap-8 equivalent */
+
+  /* Grid System */
+  --grid-gap: 1.5rem; /* gap-6 equivalent */
+  --grid-gap-lg: 2rem; /* gap-8 equivalent */
+
+  /* Header Spacing */
+  --header-margin-bottom: 3rem; /* mb-12 equivalent */
+  --header-badge-margin-bottom: 1.5rem; /* mb-6 equivalent */
 
   --radius-sm: 0.5rem;
   --radius-md: 0.75rem;
@@ -77,8 +96,9 @@
   --transition-normal: 0.3s ease-in-out;
 }
 
-/* === Custom Tailwind CSS Utility Classes === */
+/* === Tailwind v4 Utility Extensions === */
 @layer utilities {
+  /* Color Utilities */
   .text-color-primary {
     color: var(--color-primary);
   }
@@ -120,7 +140,50 @@
     background-color: var(--color-bg);
   }
 
-  /* hero */
+  /* Merkezi Spacing Utilities */
+  .section-py {
+    padding-top: var(--section-padding-y);
+    padding-bottom: var(--section-padding-y);
+  }
+
+  .section-px {
+    padding-left: var(--section-padding-x);
+    padding-right: var(--section-padding-x);
+  }
+
+  .section-mb {
+    margin-bottom: var(--section-margin-bottom);
+  }
+
+  .card-p {
+    padding: var(--card-padding);
+  }
+
+  .card-gap {
+    gap: var(--card-gap);
+  }
+
+  .card-gap-lg {
+    gap: var(--card-gap-lg);
+  }
+
+  .grid-gap {
+    gap: var(--grid-gap);
+  }
+
+  .grid-gap-lg {
+    gap: var(--grid-gap-lg);
+  }
+
+  .header-mb {
+    margin-bottom: var(--header-margin-bottom);
+  }
+
+  .header-badge-mb {
+    margin-bottom: var(--header-badge-margin-bottom);
+  }
+
+  /* Gradient Utilities */
   .bg-gradient-hero {
     background: linear-gradient(
       135deg,
@@ -148,7 +211,75 @@
   }
 
   .section-header-text-color {
-    background: "from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent";
+    background: linear-gradient(to right, #60a5fa, #a78bfa, #f472b6);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+/* === Custom Component Utilities === */
+@layer components {
+  /* Hızlı Section Setup */
+  .section-layout {
+    @apply relative isolate overflow-hidden;
+    padding-top: var(--section-padding-y);
+    padding-bottom: var(--section-padding-y);
+  }
+
+  /* Container Setup */
+  .container-layout {
+    @apply container mx-auto relative;
+    padding-left: var(--section-padding-x);
+    padding-right: var(--section-padding-x);
+  }
+
+  /* Section Header Setup */
+  .section-header-layout {
+    @apply text-center;
+    margin-bottom: var(--header-margin-bottom);
+  }
+
+  /* Card Hover Effects */
+  .card-hover-effect {
+    @apply transition-all duration-300 hover:-translate-y-1;
+  }
+
+  .card-hover-effect:hover {
+    box-shadow: var(--shadow-xl), 0 0 20px var(--gradient-shadow);
+    transform: translateY(-4px) scale(1.05);
+  }
+
+  /* Project Card Hover */
+  .project-card-hover {
+    @apply transition-all duration-300 hover:border-[var(--color-primary)] hover:shadow-xl hover:-translate-y-2;
+  }
+
+  .project-card-hover:hover {
+    transform: translateY(-0.5rem) scale(1.05);
+  }
+
+  /* Feature List */
+  .feature-list-layout {
+    @apply space-y-2;
+  }
+
+  /* Tech Tags */
+  .tech-tag-layout {
+    @apply inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-medium;
+    background-color: color-mix(in srgb, var(--color-muted) 10%, transparent);
+    color: var(--color-muted);
+  }
+
+  /* Responsive Grid Layouts */
+  .grid-services {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4;
+    gap: var(--grid-gap);
+  }
+
+  .grid-portfolio {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4;
+    gap: var(--grid-gap-lg);
   }
 }
 
@@ -167,7 +298,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
 /* === Global Button Classes === */
 .btn-gradient {
   background: var(--gradient-primary);

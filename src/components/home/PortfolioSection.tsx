@@ -89,13 +89,10 @@ const PortfolioSection: React.FC = () => {
   ];
 
   return (
-    <section
-      id="portfolio"
-      className="relative isolate overflow-hidden bg-gradient-to-br from-[var(--color-bg)] to-[var(--color-primary)]/10 py-28"
-    >
-      <div className="container mx-auto px-6">
+    <section id="portfolio" className="section-layout bg-gradient-to-br-primary">
+      <div className="container-layout">
         {/* Header */}
-        <div className="text-center mb-12">
+        <div className="section-header-layout">
           <Badge
             icon={<Palette className="text-[var(--color-primary)]" />}
             text="Başarılı Projeler"
@@ -107,7 +104,7 @@ const PortfolioSection: React.FC = () => {
         </div>
 
         {/* Portfolio Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid-portfolio">
           {projects.map((project, index) => (
             <div
               key={project.id}

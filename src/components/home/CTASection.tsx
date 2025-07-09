@@ -36,18 +36,9 @@ const cards: InfoCard[] = [
 const CTASection = () => (
   <section
     id="about"
-    className="relative isolate overflow-hidden bg-gradient-to-br from-gray-950 via-blue-950 to-purple-950 py-30"
+    className="section-layout bg-gradient-to-br from-gray-950 via-blue-950 to-purple-950 py-30"
   >
-    {/* animated gradient blobs */}
-    <div
-      aria-hidden
-      className="pointer-events-none absolute inset-0 [mask-image:radial-gradient(closest-side,white,transparent)]"
-    >
-      <div className="absolute -left-20 top-1/3 h-96 w-96 animate-blob rounded-full bg-blue-500/30 blur-3xl" />
-      <div className="absolute -right-20 top-1/4 h-96 w-96 animate-blob rounded-full bg-purple-500/30 blur-3xl delay-2000" />
-    </div>
-
-    <div className="container mx-auto relative px-6 text-center">
+    <div className="container-layout text-center">
       <Badge
         icon={<Sparkles size={16} className="text-yellow-500" />}
         text="Ücretsiz Konsültasyon"
