@@ -96,6 +96,13 @@
   --transition-normal: 0.3s ease-in-out;
 }
 
+/* Mobilde section padding azaltma */
+@media (max-width: 640px) {
+  :root {
+    --section-padding-y: 2.5rem; /* py-10 equivalent */
+  }
+}
+
 /* === Tailwind v4 Utility Extensions === */
 @layer utilities {
   /* Color Utilities */

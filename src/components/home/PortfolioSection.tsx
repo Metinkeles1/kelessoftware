@@ -11,7 +11,6 @@ import {
   CheckCircle,
 } from "lucide-react";
 import Button from "../ui/Button";
-import Image from "next/image";
 import Badge from "../ui/Badge";
 import SectionHeader from "../ui/SectionHeader";
 
@@ -119,11 +118,9 @@ const PortfolioSection: React.FC = () => {
               >
                 {/* Project Image - Increased Height */}
                 <div className="relative h-64 overflow-hidden">
-                  <Image
+                  <img
                     src={project.image}
                     alt={project.title}
-                    width={400}
-                    height={300}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
 

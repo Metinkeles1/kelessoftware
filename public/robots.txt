@@ -1,0 +1,35 @@
+# Keles Software - Professional Web Development Services
+# https://kelessoftware.com
+
+# Site URL merkezi olarak tanımlanmıştır (src/app/metadata.ts dosyasında)
+
+# Tüm arama motorlarının siteyi taramasına izin ver
+User-agent: *
+Allow: /
+
+# Tek sayfalı site için özel yapılandırma
+# Arama sayfaları ve parametreleri engelle
+Disallow: /*?
+Disallow: /*&
+Disallow: /search?
+
+# AI Botları için yapılandırma
+# OpenAI'nin ChatGPT botuna izin ver
+User-agent: GPTBot
+Allow: /
+
+# Google'ın Bard ve Vertex AI botuna izin ver
+User-agent: Google-Extended
+Allow: /
+
+# Önemli dosyalara izin ver
+Allow: /api/sitemap
+Allow: /_next/static/
+Allow: /_next/image
+Allow: /sitemap.xml
+
+# Crawl delay (nezaket için)
+Crawl-delay: 1
+
+# Sitemap konumu
+Sitemap: https://kelessoftware.com/sitemap.xml

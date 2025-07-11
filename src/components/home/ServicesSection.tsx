@@ -12,6 +12,7 @@ import {
 import Button from "../ui/Button";
 import Badge from "../ui/Badge";
 import SectionHeader from "../ui/SectionHeader";
+import Link from "next/link";
 
 interface Service {
   id: number;
@@ -21,6 +22,7 @@ interface Service {
   features: string[];
   colorClass: string;
   bgClass: string;
+  slug: string;
 }
 
 const ServicesSection: React.FC = () => {
@@ -41,6 +43,7 @@ const ServicesSection: React.FC = () => {
       ],
       colorClass: "text-color-primary",
       bgClass: "bg-color-primary",
+      slug: "web-gelistirme",
     },
     {
       id: 2,
@@ -57,6 +60,7 @@ const ServicesSection: React.FC = () => {
       ],
       colorClass: "text-color-secondary",
       bgClass: "bg-color-secondary",
+      slug: "ui-ux-tasarim",
     },
     {
       id: 3,
@@ -72,6 +76,7 @@ const ServicesSection: React.FC = () => {
       ],
       colorClass: "text-color-accent",
       bgClass: "bg-color-accent",
+      slug: "mobil-uyumlu-tasarim",
     },
     {
       id: 4,
@@ -87,11 +92,16 @@ const ServicesSection: React.FC = () => {
       ],
       colorClass: "text-color-secondary",
       bgClass: "bg-color-secondary",
+      slug: "seo-optimizasyonu",
     },
   ];
 
   return (
-    <section id="services" className="section-layout bg-gradient-to-br-primary">
+    <section
+      id="services"
+      className="section-layout bg-gradient-to-br-primary"
+      aria-labelledby="services-heading"
+    >
       <div className="container-layout">
         {/* Header */}
         <div className="section-header-layout">
@@ -107,17 +117,25 @@ const ServicesSection: React.FC = () => {
             title="Dijital Dönüşüm"
             titleGradient="Çözümlerimiz"
             description="Modern teknolojilerle işinizi dijital dünyaya taşıyoruz. Profesyonel çözümlerimizle markanızı geleceğe hazırlıyoruz."
+            id="services-heading"
           />
         </div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-14">
+        <div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-14"
+          itemScope
+          itemType="https://schema.org/ItemList"
+        >
           {services.map((service, index) => (
             <div
               key={service.id}
               className="group"
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
+              itemScope
+              itemType="https://schema.org/Service"
+              itemProp="itemListElement"
             >
               <div
                 className={`rounded-2xl border border-opacity-20 p-6 transition-all duration-300 hover:-translate-y-1`}
@@ -141,17 +159,24 @@ const ServicesSection: React.FC = () => {
                     backgroundColor: "var(--color-input)",
                     boxShadow: "var(--shadow-sm)",
                   }}
+                  aria-hidden="true"
                 >
                   {service.icon}
                 </div>
 
                 {/* Content */}
                 <div className="space-y-4">
-                  <h3 className="text-xl font-bold text-color-text text-center">
+                  <h3
+                    className="text-xl font-bold text-color-text text-center"
+                    itemProp="name"
+                  >
                     {service.title}
                   </h3>
 
-                  <p className="text-sm text-color-muted text-center leading-relaxed">
+                  <p
+                    className="text-sm text-color-muted text-center leading-relaxed"
+                    itemProp="description"
+                  >
                     {service.description}
                   </p>
 
@@ -159,7 +184,10 @@ const ServicesSection: React.FC = () => {
                   <div className="space-y-2">
                     {service.features.map((feature, featureIndex) => (
                       <div key={featureIndex} className="flex items-center gap-2">
-                        <CheckCircle className="w-4 h-4 text-color-accent" />
+                        <CheckCircle
+                          className="w-4 h-4 text-color-accent"
+                          aria-hidden="true"
+                        />
                         <span className="text-sm text-color-text">{feature}</span>
                       </div>
                     ))}
@@ -167,15 +195,20 @@ const ServicesSection: React.FC = () => {
 
                   {/* CTA */}
                   <div className="pt-4 text-center">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      icon={<ArrowRight className="w-4 h-4" />}
-                      iconPosition="right"
-                      className="mx-auto"
+                    <Link
+                      href={`/hizmetler/${service.slug}`}
+                      aria-label={`${service.title} hizmeti hakkında detaylı bilgi`}
                     >
-                      Detayları Gör
-                    </Button>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        icon={<ArrowRight className="w-4 h-4" />}
+                        iconPosition="right"
+                        className="mx-auto"
+                      >
+                        Detayları Gör
+                      </Button>
+                    </Link>
                   </div>
                 </div>
               </div>

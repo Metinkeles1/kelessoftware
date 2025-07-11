@@ -6,6 +6,7 @@ interface SectionHeaderProps {
   titleAfterGradient?: string;
   description?: React.ReactNode;
   className?: string;
+  id?: string;
 }
 
 const SectionHeader: React.FC<SectionHeaderProps> = ({
@@ -14,9 +15,13 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
   titleAfterGradient,
   description,
   className = "",
+  id,
 }) => (
   <div className={`text-center ${className}`}>
-    <h2 className="mb-6 text-4xl font-bold tracking-tight text-color-text md:text-6xl">
+    <h2
+      id={id}
+      className="mb-6 text-4xl font-bold tracking-tight text-color-text md:text-6xl"
+    >
       {title}{" "}
       {titleGradient && (
         <span

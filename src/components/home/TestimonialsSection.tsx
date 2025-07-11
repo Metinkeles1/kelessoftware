@@ -2,7 +2,6 @@
 
 import React, { FC, useState } from "react";
 import { Star, Quote, Sparkles } from "lucide-react";
-import Image from "next/image";
 import Badge from "../ui/Badge";
 import SectionHeader from "../ui/SectionHeader";
 
@@ -24,9 +23,9 @@ const TESTIMONIALS: Testimonial[] = [
   {
     id: 1,
     name: "Ahmet Yılmaz",
-    company: "TechCorp",
-    role: "CEO",
-    text: "Profesyonel ekip ve kaliteli çalışma. Websitemiz tam istediğimiz gibi oldu.",
+    company: "Yılmaz Teknoloji Ltd.",
+    role: "Genel Müdür",
+    text: "İstanbul'da web tasarım şirketi ararken Keles Software ile tanıştık. Kurumsal web sitemizi Next.js ile geliştirdiler. SEO çalışmaları sayesinde Google'da 'web tasarım istanbul' aramasında ilk sayfalardayız. Gerçekten profesyonel bir ekip!",
     rating: 5,
     avatar:
       "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
@@ -34,9 +33,9 @@ const TESTIMONIALS: Testimonial[] = [
   {
     id: 2,
     name: "Ayşe Kaya",
-    company: "Fashion Store",
+    company: "Moda Butik E-ticaret",
     role: "Marka Müdürü",
-    text: "Zamanında teslimat ve mükemmel sonuç. E-ticaret sitemiz çok başarılı oldu.",
+    text: "E-ticaret sitemizi Sancaktepe'deki ofislerinde geliştirdiler. Mobil uyumlu tasarım ve hızlı yükleme süreleri müthiş. Online satışlarımız %200 arttı. Fiyat performans açısından İstanbul'un en iyi web tasarım şirketi kesinlikle!",
     rating: 5,
     avatar:
       "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face",
@@ -44,9 +43,9 @@ const TESTIMONIALS: Testimonial[] = [
   {
     id: 3,
     name: "Mehmet Demir",
-    company: "Consulting Plus",
-    role: "Genel Müdür",
-    text: "SEO çalışmaları sayesinde Google'da üst sıralardayız. Harika bir hizmet.",
+    company: "Demir Hukuk Bürosu",
+    role: "Avukat",
+    text: "Avukat web sitesi için Keles Software'i tercih ettik. Yerel SEO çalışmaları mükemmel, 'avukat istanbul' aramalarında üst sıralardayız. UI/UX tasarımları çok profesyonel ve müvekkil kazanma oranımız arttı.",
     rating: 5,
     avatar:
       "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
@@ -54,9 +53,9 @@ const TESTIMONIALS: Testimonial[] = [
   {
     id: 4,
     name: "Fatma Özkan",
-    company: "Wellness Center",
+    company: "Özkan Wellness Center",
     role: "Pazarlama Direktörü",
-    text: "Mobil uygulamamız harika oldu. Kullanıcı deneyimi mükemmel ve performans çok iyi.",
+    text: "Sağlık sektörü için web tasarım yaptırdık. React ile geliştirilen sitemiz çok hızlı ve Google Core Web Vitals skorumuz mükemmel. Randevu sistemi entegrasyonu harika çalışıyor. İstanbul'daki en kaliteli web tasarım hizmeti.",
     rating: 5,
     avatar:
       "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
@@ -64,9 +63,9 @@ const TESTIMONIALS: Testimonial[] = [
   {
     id: 5,
     name: "Can Yıldırım",
-    company: "StartupHub",
+    company: "Yıldırım Startup Hub",
     role: "Teknoloji Direktörü",
-    text: "Backend API ve veritabanı altyapımız çok sağlam. Sistem hiç çökmedi ve ölçeklenebilir.",
+    text: "Startup projemiz için modern bir web platformu geliştirdiler. Next.js ve TypeScript kullanımları çok iyi. Backend API entegrasyonu sorunsuz çalışıyor. Teknik destek 7/24 ulaşılabilir. Kesinlikle tavsiye ederim!",
     rating: 5,
     avatar:
       "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face",
@@ -74,9 +73,9 @@ const TESTIMONIALS: Testimonial[] = [
   {
     id: 6,
     name: "Zeynep Aktaş",
-    company: "Creative Agency",
+    company: "Creative Digital Agency",
     role: "Yaratıcı Direktör",
-    text: "UI/UX tasarımları çok başarılı. Kullanıcılarımız siteyi çok beğeniyor.",
+    text: "Ajansımız için portfolio web sitesi tasarlattık. Figma tasarımlarından React'e geçiş mükemmel oldu. Responsive tasarım ve kullanıcı deneyimi çok başarılı. Müşterilerimiz siteyi çok beğeniyor ve geri dönüşler harika!",
     rating: 5,
     avatar:
       "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face",
@@ -139,12 +138,11 @@ const TestimonialsSection: FC = () => {
 
                 {/* Author */}
                 <div className="flex items-center pt-4 border-t border-color-border">
-                  <Image
+                  <img
                     src={testimonial.avatar}
                     alt={testimonial.name}
-                    width={40}
-                    height={40}
                     className="w-10 h-10 rounded-full object-cover mr-3"
+                    loading="lazy"
                   />
                   <div>
                     <h4 className="font-semibold text-color-text text-sm">
