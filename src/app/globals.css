@@ -18,6 +18,22 @@
   --color-ring: rgba(59, 130, 246, 0.5);
   --color-emphasis: #0f172a;
 
+  /* Hero Section Colors - Using existing colors where possible */
+  --hero-bg-from: #f8fafc; /* slate-50 */
+  --hero-bg-via: var(--color-bg);
+  --hero-bg-to: #eff6ff; /* blue-50 */
+
+  --hero-gradient-text-from: var(--color-primary);
+  --hero-gradient-text-via: var(--color-secondary);
+  --hero-gradient-text-to: var(--color-accent);
+
+  --hero-blob-blue: rgba(59, 130, 246, 0.15);
+  --hero-blob-purple: rgba(147, 51, 234, 0.15);
+  --hero-blob-pink: rgba(236, 72, 153, 0.15);
+  --hero-blob-orange: rgba(234, 88, 12, 0.15);
+
+  --hero-grid-color: var(--color-emphasis);
+
   --btn-primary-bg: var(--color-primary);
   --btn-primary-bg-hover: var(--color-primary-hover);
   --btn-primary-text: var(--color-white);
@@ -222,6 +238,38 @@
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+  }
+
+  /* Hero Section Utilities */
+  .bg-hero {
+    background-image: linear-gradient(
+      to bottom right,
+      var(--hero-bg-from),
+      var(--hero-bg-via),
+      var(--hero-bg-to)
+    );
+  }
+
+  .text-gradient-hero {
+    background: linear-gradient(
+      to right,
+      var(--hero-gradient-text-from),
+      var(--hero-gradient-text-via),
+      var(--hero-gradient-text-to)
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .hero-grid-pattern {
+    background-image: radial-gradient(
+      circle at 1px 1px,
+      var(--hero-grid-color) 1px,
+      transparent 0
+    );
+    background-size: 50px 50px;
+    opacity: 0.02;
   }
 }
 

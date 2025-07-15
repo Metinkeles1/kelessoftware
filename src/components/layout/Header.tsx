@@ -35,10 +35,16 @@ const navLinks = [
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [isAtTop, setIsAtTop] = useState(true);
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 20);
+    const handleScroll = () => {
+      // Sayfa en üstte mi kontrol et (0 veya çok küçük bir değer)
+      setIsAtTop(window.scrollY < 10);
+    };
+
+    // İlk yükleme durumunu kontrol et
+    handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -49,7 +55,9 @@ const Header = () => {
   return (
     <header
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
-        isScrolled ? "bg-white/95 backdrop-blur-md shadow-sm" : "bg-transparent"
+        isAtTop && !isMenuOpen
+          ? "bg-transparent"
+          : "bg-white/95 backdrop-blur-md shadow-sm"
       }`}
       role="banner"
       itemScope

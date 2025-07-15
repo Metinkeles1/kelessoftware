@@ -31,7 +31,7 @@ export default function StructuredData({
     },
     contactPoint: {
       "@type": "ContactPoint",
-      telephone: "+90-XXX-XXX-XXXX",
+      telephone: "+90-55506805425",
       contactType: "customer service",
       areaServed: "TR",
       availableLanguage: ["Turkish", "English"],
@@ -65,7 +65,7 @@ export default function StructuredData({
     image: logoUrl,
     "@id": `${siteUrl}/#organization`,
     url: siteUrl,
-    telephone: "+90-XXX-XXX-XXXX",
+    telephone: "+90-55506805425",
     address: {
       "@type": "PostalAddress",
       streetAddress: "Sancaktepe",
