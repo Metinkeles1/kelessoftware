@@ -49,13 +49,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="tr" className={`${geistSans.variable} ${geistMono.variable}`}>
-      <head>
-        <meta
-          name="description"
-          content="Keles Software olarak İstanbul Sancaktepe'den tüm Türkiye'ye profesyonel web tasarım, e-ticaret, mobil uygulama ve SEO hizmetleri sunuyoruz."
-        />
-      </head>
+    <html
+      lang="tr"
+      className={`${geistSans.variable} ${geistMono.variable}`}
+      suppressHydrationWarning
+    >
+      <head>{/* Meta description artık burada tanımlanmıyor */}</head>
       <body className="antialiased">
         <MetaTags />
         <Header />

@@ -79,6 +79,7 @@ const defaultMetadata: Metadata = {
   },
   other: {
     "theme-color": "#3b82f6",
+    "mobile-web-app-capable": "yes",
     "apple-mobile-web-app-capable": "yes",
     "apple-mobile-web-app-status-bar-style": "black-translucent",
     "apple-mobile-web-app-title": "Keles Software",
