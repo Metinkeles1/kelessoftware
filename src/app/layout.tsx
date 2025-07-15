@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+// Remove Google font imports and use system fonts instead
 import "./globals.css";
 import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
@@ -7,19 +7,8 @@ import defaultMetadata from "./metadata";
 import StructuredData from "@/components/ui/StructuredData";
 import MetaTags from "@/components/ui/MetaTags";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-  display: "swap",
-  preload: true,
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-  display: "swap",
-  preload: false,
-});
+// Define CSS variables for fonts without using next/font
+const fontClasses = "font-sans antialiased";
 
 // Viewport meta tag'i için ayrı bir export tanımlıyoruz
 export const viewport: Viewport = {
@@ -49,11 +38,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="tr"
-      className={`${geistSans.variable} ${geistMono.variable}`}
-      suppressHydrationWarning
-    >
+    <html lang="tr" className={fontClasses} suppressHydrationWarning>
       <head>{/* Meta description artık burada tanımlanmıyor */}</head>
       <body className="antialiased">
         <MetaTags />
