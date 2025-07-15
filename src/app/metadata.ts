@@ -24,7 +24,7 @@ const defaultMetadata: Metadata = {
     "react next.js geliştirme",
     "keles software",
   ],
-  authors: [{ name: "Keles Software" }],
+  authors: [{ name: "Keles Software", url: SITE_URL }],
   creator: "Keles Software",
   publisher: "Keles Software",
   metadataBase: new URL(SITE_URL),
@@ -54,21 +54,12 @@ const defaultMetadata: Metadata = {
     title: "Keles Software - Profesyonel Web Tasarım & Yazılım Hizmetleri",
     description:
       "İstanbul Sancaktepe merkezli Keles Software ile modern web tasarım ve yazılım çözümleri. Tüm Türkiye'ye hizmet veriyoruz.",
-    images: [
-      {
-        url: "/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Keles Software - Web Tasarım Hizmetleri",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Keles Software - Web Tasarım & Yazılım Hizmetleri",
     description:
       "İstanbul Sancaktepe'den tüm Türkiye'ye profesyonel web tasarım hizmetleri",
-    images: ["/og-image.jpg"],
     creator: "@keles_software",
     site: "@keles_software",
   },
@@ -79,11 +70,20 @@ const defaultMetadata: Metadata = {
   category: "Web Development",
   applicationName: "Keles Software",
   referrer: "origin-when-cross-origin",
+  formatDetection: {
+    telephone: false,
+    date: false,
+    address: false,
+    email: false,
+    url: false,
+  },
   other: {
     "theme-color": "#3b82f6",
     "apple-mobile-web-app-capable": "yes",
     "apple-mobile-web-app-status-bar-style": "black-translucent",
     "apple-mobile-web-app-title": "Keles Software",
+    "msapplication-TileColor": "#3b82f6",
+    "msapplication-config": "/browserconfig.xml",
   },
 };
 

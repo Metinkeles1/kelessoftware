@@ -1,8 +1,9 @@
 "use client";
 import { useState, useEffect } from "react";
-import { Home, Code, Briefcase, Users, Mail, Rocket, Menu, X } from "lucide-react";
+import { Home, Briefcase, Users, Mail, Rocket, Menu, X, Code } from "lucide-react";
 import Link from "next/link";
 import Button from "../ui/Button";
+import Image from "next/image";
 
 const navLinks = [
   {
@@ -63,8 +64,14 @@ const Header = () => {
             aria-label="Keles Software Ana Sayfa"
             itemProp="url"
           >
-            <div className="w-12 h-12 bg-gradient-to-br-primary rounded-xl flex items-center justify-center shadow-gradient group-hover:scale-105 transition-transform">
-              <Code className="w-6 h-6 text-color-primary" aria-hidden="true" />
+            <div className="w-12 h-12 flex items-center justify-center group-hover:scale-105 transition-transform">
+              <Image
+                src="/logo.svg"
+                width={48}
+                height={48}
+                alt="Keles Software Logo"
+                priority
+              />
             </div>
             <span className="text-2xl font-bold text-color-primary" itemProp="name">
               Keles Software

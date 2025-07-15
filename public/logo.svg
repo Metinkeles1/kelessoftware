@@ -1,0 +1,15 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>Keles Software Logo</title>
+  <desc>Keles Software - Modern Web Tasarım ve Yazılım Çözümleri</desc>
+  
+  <!-- Arka plan -->
+  <rect width="512" height="512" rx="64" fill="#0F172A" />
+  
+  <!-- Modern K harfi -->
+  <path d="M160 128L160 384" stroke="#3B82F6" stroke-width="40" stroke-linecap="round" />
+  <path d="M160 256L256 128" stroke="#3B82F6" stroke-width="40" stroke-linecap="round" />
+  <path d="M160 256L256 384" stroke="#3B82F6" stroke-width="40" stroke-linecap="round" />
+  
+  <!-- Web tasarım simgesi -->
+  <path d="M304 160L384 256L304 352" stroke="white" stroke-width="32" stroke-linecap="round" stroke-linejoin="round" />
+</svg> 

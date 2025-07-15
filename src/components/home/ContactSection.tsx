@@ -11,6 +11,7 @@ import {
   Sparkles,
   Clock,
   Globe,
+  AlertCircle,
 } from "lucide-react";
 import Button from "../ui/Button";
 import Badge from "../ui/Badge";
@@ -25,6 +26,7 @@ const ContactSection: React.FC = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -37,9 +39,30 @@ const ContactSection: React.FC = () => {
   };
 
   const handleSubmit = async () => {
-    setIsSubmitting(true);
+    // Form doğrulama
+    if (!formData.name || !formData.email || !formData.message) {
+      setError("Lütfen zorunlu alanları doldurun.");
+      return;
+    }
 
-    setTimeout(() => {
+    setIsSubmitting(true);
+    setError(null);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Bir hata oluştu.");
+      }
+
       setIsSubmitting(false);
       setIsSubmitted(true);
       setFormData({
@@ -48,26 +71,29 @@ const ContactSection: React.FC = () => {
         phone: "",
         message: "",
       });
-    }, 2000);
+    } catch (err) {
+      setIsSubmitting(false);
+      setError(err instanceof Error ? err.message : "Bir hata oluştu.");
+    }
   };
 
   const contactInfo = [
     {
       icon: <Phone className="w-5 h-5 text-color-primary" />,
       title: "Telefon",
-      value: "+90 212 123 45 67",
+      value: "+90 555 068 04 25",
       color: "bg-color-primary text-color-primary",
     },
     {
       icon: <Mail className="w-5 h-5 text-[var(--color-secondary)]" />,
       title: "E-posta",
-      value: "info@example.com",
+      value: "kelessoftware@gmail.com",
       color: "bg-[var(--color-secondary)]/10 text-[var(--color-secondary)]",
     },
     {
       icon: <MapPin className="w-5 h-5 text-[var(--color-success,#10b981)]" />,
       title: "Lokasyon",
-      value: "İstanbul, Türkiye",
+      value: "Sancaktepe,İstanbul, Türkiye",
       color: "bg-[var(--color-success,#10b981)]/10 text-[var(--color-success,#10b981)]",
     },
     {
@@ -156,6 +182,13 @@ const ContactSection: React.FC = () => {
                       Mesaj Gönder
                     </h3>
                   </div>
+
+                  {error && (
+                    <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg flex items-center gap-2 mb-4">
+                      <AlertCircle className="w-5 h-5" />
+                      <p className="text-sm">{error}</p>
+                    </div>
+                  )}
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>

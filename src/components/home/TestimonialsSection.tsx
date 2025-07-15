@@ -1,6 +1,7 @@
 "use client";
 
 import React, { FC, useState } from "react";
+import Image from "next/image";
 import { Star, Quote, Sparkles } from "lucide-react";
 import Badge from "../ui/Badge";
 import SectionHeader from "../ui/SectionHeader";
@@ -22,26 +23,16 @@ type Testimonial = {
 const TESTIMONIALS: Testimonial[] = [
   {
     id: 1,
-    name: "Ahmet Yılmaz",
-    company: "Yılmaz Teknoloji Ltd.",
-    role: "Genel Müdür",
-    text: "İstanbul'da web tasarım şirketi ararken Keles Software ile tanıştık. Kurumsal web sitemizi Next.js ile geliştirdiler. SEO çalışmaları sayesinde Google'da 'web tasarım istanbul' aramasında ilk sayfalardayız. Gerçekten profesyonel bir ekip!",
-    rating: 5,
-    avatar:
-      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
-  },
-  {
-    id: 2,
     name: "Ayşe Kaya",
     company: "Moda Butik E-ticaret",
     role: "Marka Müdürü",
     text: "E-ticaret sitemizi Sancaktepe'deki ofislerinde geliştirdiler. Mobil uyumlu tasarım ve hızlı yükleme süreleri müthiş. Online satışlarımız %200 arttı. Fiyat performans açısından İstanbul'un en iyi web tasarım şirketi kesinlikle!",
     rating: 5,
     avatar:
-      "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face",
+      "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&h=150&fit=crop&crop=face",
   },
   {
-    id: 3,
+    id: 2,
     name: "Mehmet Demir",
     company: "Demir Hukuk Bürosu",
     role: "Avukat",
@@ -51,27 +42,7 @@ const TESTIMONIALS: Testimonial[] = [
       "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
   },
   {
-    id: 4,
-    name: "Fatma Özkan",
-    company: "Özkan Wellness Center",
-    role: "Pazarlama Direktörü",
-    text: "Sağlık sektörü için web tasarım yaptırdık. React ile geliştirilen sitemiz çok hızlı ve Google Core Web Vitals skorumuz mükemmel. Randevu sistemi entegrasyonu harika çalışıyor. İstanbul'daki en kaliteli web tasarım hizmeti.",
-    rating: 5,
-    avatar:
-      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
-  },
-  {
-    id: 5,
-    name: "Can Yıldırım",
-    company: "Yıldırım Startup Hub",
-    role: "Teknoloji Direktörü",
-    text: "Startup projemiz için modern bir web platformu geliştirdiler. Next.js ve TypeScript kullanımları çok iyi. Backend API entegrasyonu sorunsuz çalışıyor. Teknik destek 7/24 ulaşılabilir. Kesinlikle tavsiye ederim!",
-    rating: 5,
-    avatar:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face",
-  },
-  {
-    id: 6,
+    id: 3,
     name: "Zeynep Aktaş",
     company: "Creative Digital Agency",
     role: "Yaratıcı Direktör",
@@ -102,11 +73,15 @@ const TestimonialsSection: FC = () => {
             className="mx-auto mb-6"
           />
 
-          <SectionHeader title="Müşteri" titleGradient="Deneyimleri" />
+          <SectionHeader
+            title="Müşteri"
+            titleGradient="Deneyimleri"
+            description="Müşterilerimizin projelerimiz hakkında söyledikleri"
+          />
         </div>
 
         {/* Testimonials Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-14">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           {TESTIMONIALS.map((testimonial, index) => (
             <div
               key={testimonial.id}
@@ -137,13 +112,16 @@ const TestimonialsSection: FC = () => {
                 </p>
 
                 {/* Author */}
-                <div className="flex items-center pt-4 border-t border-color-border">
-                  <img
-                    src={testimonial.avatar}
-                    alt={testimonial.name}
-                    className="w-10 h-10 rounded-full object-cover mr-3"
-                    loading="lazy"
-                  />
+                <div className="flex items-center">
+                  <div className="relative w-10 h-10 rounded-full overflow-hidden mr-3">
+                    <Image
+                      src={testimonial.avatar}
+                      alt={`${testimonial.name} - ${testimonial.company} müşteri fotoğrafı`}
+                      fill
+                      className="object-cover"
+                      sizes="40px"
+                    />
+                  </div>
                   <div>
                     <h4 className="font-semibold text-color-text text-sm">
                       {testimonial.name}

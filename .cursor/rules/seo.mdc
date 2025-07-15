@@ -1,0 +1,231 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# SEO Guidelines for Next.js
+
+## Meta Tags Implementation
+
+### Required Meta Tags (Every Page)
+```tsx
+// App Router
+export const metadata: Metadata = {
+  title: 'Unique Page Title (50-60 chars)',
+  description: 'Compelling description (150-160 chars)',
+  openGraph: {
+    title: 'Page Title',
+    description: 'Page description',
+    images: ['/og-image.jpg'],
+    url: 'https://domain.com/page',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Page Title',
+    description: 'Page description',
+    images: ['/og-image.jpg'],
+  },
+  alternates: {
+    canonical: 'https://domain.com/page',
+  },
+};
+
+// Pages Router
+import Head from 'next/head';
+<Head>
+  <title>Page Title</title>
+  <meta name="description" content="Page description" />
+  <meta property="og:title" content="Page Title" />
+  <meta property="og:description" content="Page description" />
+  <meta property="og:image" content="/og-image.jpg" />
+  <link rel="canonical" href="https://domain.com/page" />
+</Head>
+```
+
+### Dynamic Metadata (App Router)
+```tsx
+export async function generateMetadata({ params }): Promise<Metadata> {
+  const data = await fetchPageData(params.slug);
+  
+  return {
+    title: data.title,
+    description: data.description,
+    openGraph: {
+      title: data.title,
+      description: data.description,
+      images: [data.image],
+    },
+  };
+}
+```
+
+## HTML Semantic Structure
+- Use semantic HTML5: `<header>`, `<nav>`, `<main>`, `<article>`, `<section>`, `<footer>`
+- Implement proper heading hierarchy: H1 → H2 → H3 (no skipping)
+- Use ONLY ONE H1 per page
+- Add descriptive `alt` attributes to all images
+- Include `lang="en"` in HTML tag
+
+## Next.js Image Optimization
+```tsx
+import Image from 'next/image';
+
+// Critical images (above fold)
+<Image
+  src="/hero-image.jpg"
+  alt="Descriptive alt text"
+  width={800}
+  height={600}
+  priority
+  sizes="(max-width: 768px) 100vw, 800px"
+/>
+
+// Regular images
+<Image
+  src="/content-image.jpg"
+  alt="Descriptive alt text"
+  width={400}
+  height={300}
+  sizes="(max-width: 768px) 100vw, 400px"
+/>
+```
+
+## Performance Optimization
+
+### Core Web Vitals Targets
+- LCP (Largest Contentful Paint): < 2.5s
+- FID (First Input Delay): < 100ms
+- CLS (Cumulative Layout Shift): < 0.1
+
+### Font Optimization
+```tsx
+import { Inter, Roboto } from 'next/font/google';
+
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter',
+});
+```
+
+## URL Structure
+- Use descriptive, keyword-rich URLs
+- Implement kebab-case slugs: `/blog/seo-best-practices`
+- Set up 301 redirects for changed URLs
+- Use Next.js dynamic routing: `[slug].tsx`
+
+## Structured Data (JSON-LD)
+```tsx
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: title,
+  description: description,
+  author: {
+    '@type': 'Person',
+    name: 'Author Name',
+  },
+  datePublished: publishDate,
+  image: imageUrl,
+};
+
+// In component
+<script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+/>
+```
+
+## Technical SEO Checklist
+
+### Files to Create/Maintain
+1. `/public/robots.txt`
+```txt
+User-agent: *
+Allow: /
+Sitemap: https://domain.com/sitemap.xml
+```
+
+2. `/app/sitemap.ts` (App Router)
+```tsx
+export default function sitemap() {
+  return [
+    {
+      url: 'https://domain.com',
+      lastModified: new Date(),
+      changeFrequency: 'yearly',
+      priority: 1,
+    },
+    // ... more URLs
+  ];
+}
+```
+
+### Security Headers (next.config.js)
+```js
+const securityHeaders = [
+  {
+    key: 'X-DNS-Prefetch-Control',
+    value: 'on'
+  },
+  {
+    key: 'Strict-Transport-Security',
+    value: 'max-age=63072000; includeSubDomains; preload'
+  },
+];
+
+module.exports = {
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: securityHeaders,
+      },
+    ];
+  },
+};
+```
+
+## Content Optimization Rules
+- Write unique, descriptive content (300+ words for pages)
+- Use proper heading structure for content hierarchy
+- Include relevant internal and external links
+- Optimize images with descriptive filenames and alt text
+- Create compelling meta descriptions with clear value propositions
+
+## Local SEO (When Applicable)
+- Include NAP (Name, Address, Phone) consistently
+- Add location-specific keywords naturally
+- Implement local business schema markup
+- Create location-specific landing pages
+
+## SEO Anti-Patterns (AVOID)
+- Duplicate title tags or meta descriptions across pages
+- Images without alt text or proper dimensions
+- Thin content (< 300 words) or duplicate content
+- Slow loading times (> 3 seconds)
+- Missing canonical URLs
+- Poor mobile experience
+- Keyword stuffing
+- Hidden text or cloaking
+
+## International SEO
+```js
+// next.config.js
+module.exports = {
+  i18n: {
+    locales: ['en', 'tr', 'de'],
+    defaultLocale: 'en',
+  },
+};
+```
+
+## Monitoring and Analytics
+- Set up Google Analytics 4
+- Configure Google Search Console
+- Monitor Core Web Vitals with Real User Monitoring
+- Track keyword rankings and organic traffic
+- Set up automated SEO monitoring alerts
+
+
+

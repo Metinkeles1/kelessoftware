@@ -1,18 +1,11 @@
 "use client";
-import React, { useState } from "react";
-import {
-  ExternalLink,
-  Palette,
-  ShoppingCart,
-  Building,
-  BookOpen,
-  User,
-  Eye,
-  CheckCircle,
-} from "lucide-react";
+import React from "react";
+import Image from "next/image";
+import { ExternalLink, Palette, Clock } from "lucide-react";
 import Button from "../ui/Button";
 import Badge from "../ui/Badge";
 import SectionHeader from "../ui/SectionHeader";
+import Link from "next/link";
 
 interface Project {
   id: number;
@@ -20,165 +13,127 @@ interface Project {
   category: string;
   description: string;
   technologies: string[];
-  color: string;
-  bgColor: string;
-  icon: React.ReactNode;
   image: string;
-  features: string[];
+  demoUrl?: string;
+  githubUrl?: string;
+  featured: boolean;
 }
 
 const PortfolioSection: React.FC = () => {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-
   const projects: Project[] = [
     {
       id: 1,
-      title: "E-Ticaret Sitesi",
-      category: "E-Ticaret",
+      title: "Fashion E-Commerce",
+      category: "e-commerce",
       description:
-        "Modern e-ticaret çözümü ile kapsamlı online satış platformu geliştirdik.",
-      technologies: ["React", "Node.js", "MongoDB"],
-      color: "text-[var(--color-accent)]",
-      bgColor: "bg-[var(--color-accent)]/10",
-      icon: <ShoppingCart className="w-6 h-6 text-[var(--color-accent)]" />,
-      image:
-        "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=300&fit=crop",
-      features: ["Ödeme Sistemi", "Mobil Uyumlu"],
+        "Moda odaklı e-ticaret platformu. Ürün filtreleme, favoriler ve güvenli ödeme sistemi.",
+      technologies: ["React", "Node.js", "Express", "PostgreSQL"],
+      image: "/projects-img/fashion-commerce.png",
+      githubUrl: "https://github.com/kelessoftware/fashion-commerce",
+      featured: false,
     },
     {
       id: 2,
-      title: "Kurumsal Website",
-      category: "Kurumsal",
+      title: "Monolit Architecture",
+      category: "design",
       description:
-        "Profesyonel kurumsal kimlik ve kullanıcı deneyimi odaklı arayüz tasarımı.",
-      technologies: ["Next.js", "TypeScript", "Tailwind"],
-      color: "text-[var(--color-primary)]",
-      bgColor: "bg-[var(--color-primary)]/10",
-      icon: <Building className="w-6 h-6 text-[var(--color-primary)]" />,
-      image:
-        "https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&h=300&fit=crop",
-      features: ["CMS Entegrasyonu", "SEO Optimizasyonu"],
+        "Mimarlık firması için tasarlanmış portföy sitesi. Projeler, ekip ve iletişim bilgileri için modern arayüz.",
+      technologies: ["Next.js", "React", "Framer Motion", "GSAP"],
+      image: "/projects-img/monolit-architecture.png",
+      demoUrl: "https://monolit-architect.vercel.app/portfolio",
+      githubUrl: "https://github.com/kelessoftware/monolit-architect",
+      featured: true,
     },
     {
       id: 3,
-      title: "Blog Platformu",
-      category: "Blog",
-      description: "Gelişmiş içerik yönetimi ve SEO optimizasyonu ile blog platformu.",
-      technologies: ["WordPress", "PHP", "MySQL"],
-      color: "text-[var(--color-success,#10b981)]",
-      bgColor: "bg-[var(--color-success,#10b981)]/10",
-      icon: <BookOpen className="w-6 h-6 text-[var(--color-success,#10b981)]" />,
-      image:
-        "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=400&h=300&fit=crop",
-      features: ["Editör Arayüzü", "Yorum Sistemi"],
+      title: "Food Ordering",
+      category: "e-commerce",
+      description:
+        "Online yemek sipariş platformu. Sepet yönetimi, ödeme entegrasyonu ve kullanıcı hesapları.",
+      technologies: ["Next.js", "MongoDB", "Redux", "Stripe"],
+      image: "/projects-img/food-ordering.png",
+      demoUrl: "https://food-ordering-nextjs-five.vercel.app/",
+      githubUrl: "https://github.com/kelessoftware/food-ordering",
+      featured: true,
     },
     {
       id: 4,
-      title: "Portföy Sitesi",
-      category: "Portföy",
-      description: "Kişisel marka ve portföy sunumu için özel tasarlanmış modern site.",
-      technologies: ["Vue.js", "Nuxt", "SCSS"],
-      color: "text-[var(--color-secondary)]",
-      bgColor: "bg-[var(--color-secondary)]/10",
-      icon: <User className="w-6 h-6 text-[var(--color-secondary)]" />,
-      image:
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop",
-      features: ["Animasyonlar", "Galeri Sistemi"],
+      title: "Car Showcase",
+      category: "web",
+      description:
+        "Modern araç kiralama ve vitrin uygulaması. Filtreleme ve arama özellikleri ile kullanıcı dostu arayüz.",
+      technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Rapid API"],
+      image: "/projects-img/car-showcase.png",
+      demoUrl: "https://car-showcase-beta-ten.vercel.app/",
+      githubUrl: "https://github.com/kelessoftware/car-showcase",
+      featured: true,
     },
   ];
 
   return (
-    <section id="portfolio" className="section-layout bg-gradient-to-br-primary">
-      <div className="container-layout">
+    <section
+      id="portfolio"
+      className="py-24 bg-gradient-to-b from-[var(--color-bg)] to-[var(--color-bg-alt)]"
+    >
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="section-header-layout">
+        <div className="text-center mb-12">
           <Badge
-            icon={<Palette className="text-[var(--color-primary)]" />}
-            text="Başarılı Projeler"
-            bgClassName="bg-[var(--color-bg)]"
+            icon={<Palette className="w-4 h-4 text-[var(--color-primary)]" />}
+            text="Projelerimiz"
+            bgClassName="bg-[var(--color-bg-alt)]"
             textClassName="text-[var(--color-text)]"
           />
 
-          <SectionHeader title="Öne Çıkan" titleGradient="Portföyümüz" />
+          <SectionHeader title="Öne Çıkan" titleGradient="Çalışmalarımız" />
+
+          <p className="mt-4 text-[var(--color-muted)] max-w-2xl mx-auto">
+            Modern teknolojiler kullanarak geliştirdiğimiz projelerimizi keşfedin. Her
+            proje, kullanıcı deneyimi ve performans odaklı olarak tasarlanmıştır.
+          </p>
         </div>
 
         {/* Portfolio Grid */}
-        <div className="grid-portfolio">
-          {projects.map((project, index) => (
-            <div
-              key={project.id}
-              className="group"
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
-            >
-              <div
-                className={`bg-[var(--color-bg)] border border-[var(--color-border)] rounded-2xl overflow-hidden h-full transition-all duration-300 hover:border-[var(--color-primary)] hover:shadow-xl hover:-translate-y-2 ${
-                  hoveredIndex === index ? "scale-105 shadow-xl" : ""
-                }`}
-              >
-                {/* Project Image - Increased Height */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {projects.map((project) => (
+            <div key={project.id} className="group relative">
+              <div className="bg-[var(--color-bg)] border border-[var(--color-border)] rounded-2xl overflow-hidden h-full transition-all duration-500 hover:border-[var(--color-primary)] hover:shadow-xl hover:-translate-y-2">
+                {/* Project Image */}
                 <div className="relative h-64 overflow-hidden">
-                  <img
+                  <Image
                     src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    alt={`${project.title} - ${project.description} - Keles Software Portföy Projesi`}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    priority={project.featured}
                   />
-
-                  {/* Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
 
                   {/* Category Badge */}
                   <div className="absolute top-4 left-4">
-                    <div
-                      className={`inline-flex items-center px-3 py-1.5 rounded-full text-xs font-semibold ${project.bgColor} ${project.color} backdrop-blur-sm`}
-                    >
-                      {project.category}
+                    <div className="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-semibold bg-[var(--color-primary)]/50 text-white ">
+                      {project.category.charAt(0).toUpperCase() +
+                        project.category.slice(1)}
                     </div>
-                  </div>
-
-                  {/* Icon */}
-                  <div className="absolute top-4 right-4">
-                    <div
-                      className={`w-12 h-12 ${project.bgColor} rounded-xl flex items-center justify-center backdrop-blur-sm border border-[var(--color-bg)]/20`}
-                    >
-                      <div className={project.color}>{project.icon}</div>
-                    </div>
-                  </div>
-
-                  {/* Title on Image */}
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <h3 className="text-xl font-bold text-[var(--color-bg)] mb-1">
-                      {project.title}
-                    </h3>
                   </div>
                 </div>
 
-                {/* Content - Reduced */}
-                <div className="p-6 space-y-4">
-                  <div>
-                    <p className="text-[var(--color-muted)] leading-relaxed text-sm">
-                      {project.description}
-                    </p>
-                  </div>
+                {/* Content */}
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-[var(--color-text)] mb-2 group-hover:text-[var(--color-primary)] transition-colors">
+                    {project.title}
+                  </h3>
 
-                  {/* Features - Reduced to 2 items */}
-                  <div className="flex flex-wrap gap-2">
-                    {project.features.map((feature, featureIndex) => (
-                      <div key={featureIndex} className="flex items-center gap-1.5">
-                        <CheckCircle className={`w-3 h-3 ${project.color}`} />
-                        <span className="text-xs text-[var(--color-muted)]">
-                          {feature}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
+                  <p className="text-[var(--color-muted)] text-sm mb-4 line-clamp-2">
+                    {project.description}
+                  </p>
 
                   {/* Technologies */}
-                  <div className="flex flex-wrap gap-1.5">
+                  <div className="flex flex-wrap gap-1.5 mb-4">
                     {project.technologies.map((tech, techIndex) => (
                       <span
                         key={techIndex}
-                        className="inline-flex items-center px-2.5 py-1 bg-[var(--color-muted)]/10 text-[var(--color-muted)] rounded-lg text-xs font-medium"
+                        className="inline-flex items-center px-2.5 py-1 bg-[var(--color-bg-alt)] text-[var(--color-muted)] rounded-lg text-xs font-medium"
                       >
                         {tech}
                       </span>
@@ -187,32 +142,39 @@ const PortfolioSection: React.FC = () => {
 
                   {/* CTA */}
                   <div className="pt-4 border-t border-[var(--color-border)]">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      icon={<Eye className="w-4 h-4 text-[var(--color-primary)]" />}
-                      iconPosition="right"
-                      className="w-full group-hover:border-[var(--color-primary)] group-hover:text-[var(--color-primary)] transition-colors"
-                    >
-                      <span className="text-sm font-medium">Projeyi İncele</span>
-                    </Button>
+                    {project.demoUrl ? (
+                      <Link
+                        href={project.demoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          icon={<ExternalLink className="w-4 h-4" />}
+                          iconPosition="right"
+                          className="w-full group-hover:border-[var(--color-primary)] group-hover:text-[var(--color-primary)] transition-colors"
+                        >
+                          <span className="text-sm font-medium">Projeyi İncele</span>
+                        </Button>
+                      </Link>
+                    ) : (
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        icon={<Clock className="w-4 h-4" />}
+                        iconPosition="right"
+                        className="w-full cursor-not-allowed opacity-80"
+                        disabled
+                      >
+                        <span className="text-sm font-medium">Yakında Canlıda</span>
+                      </Button>
+                    )}
                   </div>
                 </div>
               </div>
             </div>
           ))}
-        </div>
-
-        {/* CTA Section */}
-        <div className="flex justify-center mt-12">
-          <Button
-            variant="gradient"
-            size="lg"
-            icon={<ExternalLink className="w-5 h-5 text-[var(--color-primary)]" />}
-            iconPosition="right"
-          >
-            Tüm Projeleri Görüntüle
-          </Button>
         </div>
       </div>
     </section>
