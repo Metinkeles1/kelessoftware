@@ -32,56 +32,64 @@ const HeroSection = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-10 sm:pt-0">
         <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
           {/* Left Content */}
-          <div className="space-y-4 sm:space-y-6 md:space-y-8 text-center lg:text-left">
-            {/* Main Heading - Adjusted font sizes for mobile */}
-            <div className="space-y-2 sm:space-y-3 md:space-y-4">
-              <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight">
-                <span className="text-color-emphasis block">Modern</span>
-                <span className="text-gradient-hero block">Web Siteleri</span>
-                <span className="text-color-emphasis block text-xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">
-                  Tasarlıyoruz
+          <div className="space-y-6 sm:space-y-7 text-center lg:text-left">
+            {/* Main Heading - SEO ve Mobile uyumlu başlık yapısı */}
+            <div>
+              <h1 className="font-bold leading-tight mb-3">
+                <span className="text-color-emphasis text-4xl sm:text-5xl md:text-6xl lg:text-7xl inline-block">
+                  Modern
+                </span>{" "}
+                <span className="text-gradient-hero text-4xl sm:text-5xl md:text-6xl lg:text-7xl inline-block">
+                  Web Siteleri
                 </span>
               </h1>
 
-              <p className="text-sm sm:text-lg md:text-xl text-color-muted max-w-xl mx-auto lg:mx-0 leading-relaxed">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-color-emphasis mt-2">
+                Tasarlıyoruz
+              </h2>
+
+              <p className="text-base sm:text-lg md:text-xl text-color-muted max-w-xl mx-auto lg:mx-0 leading-relaxed mt-4">
                 İşinizi büyüten, ziyaretçileri müşteriye dönüştüren web siteleri
                 tasarlıyoruz. Modern tasarım, hızlı performans ve SEO odaklı çözümler.
               </p>
             </div>
 
-            {/* Feature Pills */}
+            {/* Feature Pills - Daha büyük ve tıklanabilir */}
             <div className="flex flex-wrap gap-2 sm:gap-3 justify-center lg:justify-start">
               {features.map((feature, index) => (
                 <div
                   key={index}
-                  className="flex items-center gap-1.5 sm:gap-2 px-2.5 py-1 sm:px-3.5 sm:py-1.5 bg-white/60 backdrop-blur-sm rounded-full border border-gray-200"
+                  className="flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 bg-white/60 backdrop-blur-sm rounded-full border border-gray-200 shadow-sm"
                 >
                   <feature.icon
-                    className={`w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 ${feature.color}`}
+                    className={`w-4 h-4 sm:w-5 sm:h-5 ${feature.color}`}
+                    aria-hidden="true"
                   />
-                  <span className="text-xs sm:text-sm font-medium text-color-emphasis">
+                  <span className="text-sm sm:text-base font-medium text-color-emphasis">
                     {feature.text}
                   </span>
                 </div>
               ))}
             </div>
 
-            {/* CTA Buttons - Fixed width issue on mobile */}
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
-              <Button
-                variant="gradient"
-                size="lg"
-                icon={<ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />}
-                iconPosition="right"
-                className="w-full sm:w-auto shadow-gradient hover:shadow-xl text-sm sm:text-base px-4 sm:px-6 py-2.5 sm:py-3"
-              >
-                Projeye Başla
-              </Button>
+            {/* CTA Buttons - Daha büyük ve tıklanabilir */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+              <Link href="#contact" className="inline-block w-full sm:w-auto">
+                <Button
+                  variant="gradient"
+                  size="lg"
+                  icon={<ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />}
+                  iconPosition="right"
+                  className="w-full sm:w-auto shadow-gradient hover:shadow-xl text-base sm:text-lg px-5 py-3 sm:px-6 sm:py-3.5"
+                >
+                  Projeye Başla
+                </Button>
+              </Link>
               <Link href="#portfolio" className="inline-block w-full sm:w-auto">
                 <Button
                   variant="outline"
                   size="lg"
-                  className="w-full border-2 hover:bg-gray-50 text-sm sm:text-base px-4 sm:px-6 py-2.5 sm:py-3"
+                  className="w-full border-2 hover:bg-gray-50 text-base sm:text-lg px-5 py-3 sm:px-6 sm:py-3.5"
                 >
                   Portföyü Gör
                 </Button>

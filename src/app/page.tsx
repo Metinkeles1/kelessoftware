@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { SITE_URL } from "./metadata";
 
 export const metadata: Metadata = {
-  title: "Keles Software - Profesyonel Web Tasarım & Yazılım Hizmetleri | İstanbul",
+  title: "Keles Software",
   description:
     "İstanbul'da profesyonel web tasarım, e-ticaret ve yazılım çözümleri sunan Keles Software. SEO uyumlu, hızlı ve mobil dostu web siteleri ile işletmenizi dijitale taşıyoruz. Ücretsiz keşif görüşmesi için hemen arayın!",
   alternates: {

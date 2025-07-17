@@ -3,7 +3,6 @@ import { Phone, Sparkles, Zap, MessageCircle } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import Badge from "../ui/Badge";
 import Button from "../ui/Button";
-import SectionHeader from "../ui/SectionHeader";
 
 type InfoCard = {
   icon: LucideIcon;
@@ -17,48 +16,60 @@ const cards: InfoCard[] = [
     icon: Zap,
     title: "Hızlı Yanıt Garantisi",
     description: "24 saat içinde projenize dönüş yapıyoruz",
-    color: "bg-green-500/20 text-green-400",
+    color: "text-emerald-400",
   },
   {
     icon: MessageCircle,
     title: "Ücretsiz Danışmanlık",
     description: "İlk görüşme ve proje analizi tamamen ücretsiz",
-    color: "bg-blue-500/20 text-blue-400",
+    color: "text-blue-400",
   },
   {
     icon: Sparkles,
     title: "Uzman Ekip",
     description: "5+ yıl deneyimli web tasarım uzmanları",
-    color: "bg-purple-500/20 text-purple-400",
+    color: "text-violet-400",
   },
 ];
 
 const CTASection = () => (
   <section
     id="about"
-    className="section-layout bg-gradient-to-br from-gray-950 via-blue-950 to-purple-950 py-30"
+    className="section-layout bg-gradient-to-b from-slate-950 to-slate-900 py-30"
     aria-labelledby="cta-heading"
   >
     <div className="container-layout text-center">
+      {/* Minimalist Badge */}
       <Badge
-        icon={<Sparkles size={16} className="text-yellow-500" />}
+        icon={<Sparkles size={14} className="text-amber-400" />}
         text="Ücretsiz Konsültasyon"
-        bgClassName="bg-white/5 border border-white/15 backdrop-blur"
-        textClassName="text-white"
-        className="mx-auto mb-6"
+        bgClassName="bg-slate-800/80 border border-slate-700/50"
+        textClassName="text-slate-200 text-sm"
+        className="mx-auto mb-8"
       />
 
-      <SectionHeader
-        title="Web Sitenizi Profesyonel Ekibimizle"
-        titleGradient="Hayata Geçirmeye"
-        titleAfterGradient="Hazır mısınız?"
-        description="Keles Software olarak İstanbul Sancaktepe'den tüm Türkiye'ye hizmet veriyoruz. Modern web tasarım ve yazılım çözümleriyle işinizi dijital dünyaya taşıyoruz. Ücretsiz konsültasyonda projenizi birlikte planlayalım."
-        className="text-white"
-      />
+      {/* Clean Header */}
+      <div className="max-w-4xl mx-auto mb-12">
+        <h1
+          id="cta-heading"
+          className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
+        >
+          Web Sitenizi Profesyonel Ekibimizle{" "}
+          <span className="bg-gradient-to-r from-blue-400 via-violet-400 to-emerald-400 bg-clip-text text-transparent">
+            Hayata Geçirmeye
+          </span>{" "}
+          Hazır mısınız?
+        </h1>
+        <p className="text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto">
+          Keles Software olarak İstanbul Sancaktepe&apos;den tüm Türkiye&apos;ye hizmet
+          veriyoruz. Modern web tasarım ve yazılım çözümleriyle işinizi dijital dünyaya
+          taşıyoruz.
+        </p>
+      </div>
 
-      {/* Structured Data için gizli içerik */}
+      {/* Structured Data için SEO içeriği */}
       <div className="sr-only">
-        <h2 id="cta-heading">Keles Software - İstanbul Web Tasarım Hizmetleri</h2>
+        <h2>Keles Software - İstanbul Web Tasarım Hizmetleri</h2>
         <p>
           Sancaktepe merkezli web tasarım şirketi olarak e-ticaret, kurumsal web sitesi,
           mobil uygulama geliştirme ve SEO hizmetleri sunuyoruz. React, Next.js, modern
@@ -66,49 +77,54 @@ const CTASection = () => (
         </p>
       </div>
 
-      {/* CTA buttons */}
-      <div className="flex flex-col sm:flex-row gap-4 mb-20 items-center justify-center">
-        <div className="flex flex-col sm:flex-row gap-4 pt-6">
-          <Button
-            variant="gradient"
-            icon={<MessageCircle />}
-            iconPosition="left"
-            size="lg"
-            aria-label="Keles Software ile web tasarım projenizi başlatın"
-          >
-            Hemen Başlayalım
-          </Button>
-          <Button
-            variant="outline"
-            icon={<Phone />}
-            size="lg"
-            iconPosition="left"
-            aria-label="Keles Software portföyünü inceleyin"
-          >
-            Portföyümüzü İncele
-          </Button>
-        </div>
+      {/* Clean CTA Buttons */}
+      <div className="flex flex-col sm:flex-row gap-4 items-center justify-center mb-16">
+        <Button
+          variant="gradient"
+          icon={<MessageCircle size={18} />}
+          iconPosition="left"
+          size="lg"
+          onClick={() => {
+            const contactSection = document.getElementById("contact");
+            contactSection?.scrollIntoView({ behavior: "smooth" });
+          }}
+          className="bg-gradient-to-r from-blue-500 to-violet-500 hover:from-blue-600 hover:to-violet-600 px-8 py-4 text-white font-semibold rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl"
+          aria-label="Keles Software ile web tasarım projenizi başlatın"
+        >
+          Hemen Başlayalım
+        </Button>
+        <Button
+          variant="outline"
+          icon={<Phone size={18} />}
+          size="lg"
+          iconPosition="left"
+          onClick={() => {
+            const portfolioSection = document.getElementById("portfolio");
+            portfolioSection?.scrollIntoView({ behavior: "smooth" });
+          }}
+          className="border-2 border-slate-600 text-slate-200 hover:border-slate-500 hover:bg-slate-800/50 px-8 py-4 font-semibold rounded-xl transition-all duration-200"
+          aria-label="Keles Software portföyünü inceleyin"
+        >
+          Portföyümüzü İncele
+        </Button>
       </div>
 
-      {/* Info cards */}
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto">
+      {/* Minimal Info Cards */}
+      <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 max-w-4xl mx-auto">
         {cards.map(({ icon: Icon, title, description, color }) => (
           <article
             key={title}
-            className="group rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur transition hover:bg-white/10"
+            className="group text-center"
             itemScope
             itemType="https://schema.org/Service"
           >
-            <div
-              className={`mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-xl ${color}`}
-              aria-hidden="true"
-            >
-              <Icon size={24} />
+            <div className="mb-4" aria-hidden="true">
+              <Icon size={28} className={`mx-auto ${color}`} />
             </div>
-            <h3 className="mb-1 font-semibold text-white" itemProp="name">
+            <h3 className="text-lg font-semibold text-white mb-2" itemProp="name">
               {title}
             </h3>
-            <p className="text-sm text-blue-100" itemProp="description">
+            <p className="text-slate-400 leading-relaxed" itemProp="description">
               {description}
             </p>
           </article>

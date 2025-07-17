@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import { ExternalLink, Palette, Clock } from "lucide-react";
+import { ExternalLink, Clock, Sparkles } from "lucide-react";
 import Button from "../ui/Button";
 import Badge from "../ui/Badge";
 import SectionHeader from "../ui/SectionHeader";
@@ -73,24 +73,26 @@ const PortfolioSection: React.FC = () => {
   return (
     <section
       id="portfolio"
-      className="py-24 bg-gradient-to-b from-[var(--color-bg)] to-[var(--color-bg-alt)]"
+      className="section-layout bg-gradient-to-br-primary"
+      aria-labelledby="portfolio-heading"
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container-layout relative z-10">
         {/* Header */}
-        <div className="text-center mb-12">
+        <div className="section-header-layout mb-10 md:mb-16">
           <Badge
-            icon={<Palette className="w-4 h-4 text-[var(--color-primary)]" />}
+            icon={<Sparkles size={16} className="text-color-accent" />}
             text="Projelerimiz"
-            bgClassName="bg-[var(--color-bg-alt)]"
-            textClassName="text-[var(--color-text)]"
+            bgClassName="bg-color-bg border border-color-border backdrop-blur"
+            textClassName="text-color-text"
+            className="mx-auto mb-6"
           />
 
-          <SectionHeader title="Öne Çıkan" titleGradient="Çalışmalarımız" />
-
-          <p className="mt-4 text-[var(--color-muted)] max-w-2xl mx-auto">
-            Modern teknolojiler kullanarak geliştirdiğimiz projelerimizi keşfedin. Her
-            proje, kullanıcı deneyimi ve performans odaklı olarak tasarlanmıştır.
-          </p>
+          <SectionHeader
+            id="portfolio-heading"
+            title="Öne Çıkan"
+            titleGradient="Çalışmalarımız"
+            description="Modern teknolojiler kullanarak geliştirdiğimiz projelerimizi keşfedin. Her proje, kullanıcı deneyimi ve performans odaklı olarak tasarlanmıştır."
+          />
         </div>
 
         {/* Portfolio Grid */}
