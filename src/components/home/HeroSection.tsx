@@ -72,15 +72,17 @@ const HeroSection = () => {
               ))}
             </div>
 
-            {/* CTA Buttons - Daha büyük ve tıklanabilir */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+            {/* CTA Buttons - Mobile optimized */}
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
               <Link href="#contact" className="inline-block w-full sm:w-auto">
                 <Button
                   variant="gradient"
-                  size="lg"
-                  icon={<ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />}
+                  size="md"
+                  icon={
+                    <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5" />
+                  }
                   iconPosition="right"
-                  className="w-full sm:w-auto shadow-gradient hover:shadow-xl text-base sm:text-lg px-5 py-3 sm:px-6 sm:py-3.5"
+                  className="w-full sm:w-auto shadow-gradient hover:shadow-lg text-sm sm:text-base md:text-lg px-4 py-2 sm:px-5 sm:py-3 md:px-6 md:py-3.5"
                 >
                   Projeye Başla
                 </Button>
@@ -88,8 +90,8 @@ const HeroSection = () => {
               <Link href="#portfolio" className="inline-block w-full sm:w-auto">
                 <Button
                   variant="outline"
-                  size="lg"
-                  className="w-full border-2 hover:bg-gray-50 text-base sm:text-lg px-5 py-3 sm:px-6 sm:py-3.5"
+                  size="md"
+                  className="w-full border border-2 hover:bg-gray-50 text-sm sm:text-base md:text-lg px-4 py-2 sm:px-5 sm:py-3 md:px-6 md:py-3.5"
                 >
                   Portföyü Gör
                 </Button>
