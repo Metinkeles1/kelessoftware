@@ -27,8 +27,15 @@ export const metadata: Metadata = {
     "Keles Software olarak İstanbul Sancaktepe'den tüm Türkiye'ye profesyonel web tasarım, e-ticaret, mobil uygulama ve SEO hizmetleri sunuyoruz.",
   ...defaultMetadata,
   icons: {
-    icon: { url: "/favicon.svg", type: "image/svg+xml" },
-    apple: "/logo-192x192.svg",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon-96x96.png", type: "image/png" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+      { url: "/logo-192x192.svg", type: "image/svg+xml" },
+    ],
   },
 };
 
@@ -39,7 +46,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="tr" className={fontClasses} suppressHydrationWarning>
-      <head>{/* Meta description artık burada tanımlanmıyor */}</head>
+      <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+      </head>
       <body className="antialiased">
         <MetaTags />
         <Header />
