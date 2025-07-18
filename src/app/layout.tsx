@@ -4,7 +4,7 @@ import "./globals.css";
 import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
 import defaultMetadata from "./metadata";
-import StructuredData from "@/components/ui/StructuredData";
+
 import MetaTags from "@/components/ui/MetaTags";
 
 // Define CSS variables for fonts without using next/font
@@ -57,7 +57,6 @@ export default function RootLayout({
         <Header />
         <main id="main-content">{children}</main>
         <Footer />
-        <StructuredData />
       </body>
     </html>
   );

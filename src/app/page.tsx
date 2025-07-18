@@ -48,7 +48,7 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "@id": `${SITE_URL}/#organization`,
+  "@id": SITE_URL,
   name: "Keles Software",
   url: SITE_URL,
   logo: {
@@ -56,7 +56,7 @@ const jsonLd = {
     url: `${SITE_URL}/logo.svg`,
     width: 512,
     height: 512,
-    "@id": `${SITE_URL}/#logo`,
+    "@id": `${SITE_URL}/logo.svg`,
   },
   image: {
     "@type": "ImageObject",
@@ -66,51 +66,54 @@ const jsonLd = {
   },
   contactPoint: {
     "@type": "ContactPoint",
-    telephone: "+90-XXX-XXX-XXXX",
+    telephone: "+90-555-0680-5425",
     contactType: "customer service",
     areaServed: "TR",
-    availableLanguage: "Turkish",
+    availableLanguage: ["Turkish", "English"],
   },
   address: {
     "@type": "PostalAddress",
-    streetAddress: "Sancaktepe",
-    addressLocality: "İstanbul",
+    streetAddress: "Safa Mahallesi, Şehit Hakan Genç Sokak",
+    addressLocality: "Sancaktepe",
     addressRegion: "İstanbul",
-    postalCode: "34785",
+    postalCode: "34791",
     addressCountry: "TR",
   },
   geo: {
     "@type": "GeoCoordinates",
     latitude: 41.0082,
-    longitude: 28.9784,
+    longitude: 29.1921,
   },
   sameAs: [
-    "https://www.linkedin.com/company/keles-software",
-    "https://twitter.com/keles_software",
-    "https://www.instagram.com/keles_software",
+    "https://www.linkedin.com/company/kelessoftware",
+    "https://twitter.com/kelessoftware",
+    "https://www.instagram.com/kelessoftware",
     "https://www.facebook.com/kelessoftware",
   ],
   founder: {
     "@type": "Person",
     name: "Keles Software",
+    jobTitle: "Web Tasarım ve Yazılım Şirketi",
   },
-  foundingDate: "2020",
+  foundingDate: "2020-04-15",
   priceRange: "₺₺",
   openingHours: "Mo,Tu,We,Th,Fr 09:00-18:00",
-  telephone: "+90-XXX-XXX-XXXX",
+  telephone: "+90-555-0680-5425",
   email: "info@kelessoftware.com",
   services: [
     "Web Tasarım",
     "E-ticaret Geliştirme",
     "SEO Hizmetleri",
     "Mobil Uygulama Geliştirme",
+    "UI/UX Tasarım",
+    "Kurumsal Kimlik Tasarımı",
   ],
   areaServed: {
     "@type": "GeoCircle",
     geoMidpoint: {
       "@type": "GeoCoordinates",
       latitude: 41.0082,
-      longitude: 28.9784,
+      longitude: 29.1921,
     },
     geoRadius: "50000",
   },
@@ -124,7 +127,7 @@ const jsonLd = {
           "@type": "Service",
           name: "Kurumsal Web Sitesi Tasarımı",
           description:
-            "Profesyonel, SEO uyumlu kurumsal web sitesi tasarımı ve geliştirme hizmetleri.",
+            "Profesyonel, SEO uyumlu kurumsal web sitesi tasarımı ve geliştirme hizmetleri. Mobil uyumlu, hızlı ve modern tasarımlar.",
         },
       },
       {
@@ -133,7 +136,7 @@ const jsonLd = {
           "@type": "Service",
           name: "E-Ticaret Sitesi Geliştirme",
           description:
-            "Özelleştirilebilir, kullanıcı dostu e-ticaret platformları geliştirme.",
+            "Özelleştirilebilir, kullanıcı dostu e-ticaret platformları geliştirme. WooCommerce, Shopify ve özel çözümler.",
         },
       },
       {
@@ -142,11 +145,39 @@ const jsonLd = {
           "@type": "Service",
           name: "SEO Optimizasyonu",
           description:
-            "Arama motoru sıralamasını iyileştirmek için kapsamlı SEO hizmetleri.",
+            "Arama motoru sıralamasını iyileştirmek için kapsamlı SEO hizmetleri. Teknik SEO, içerik optimizasyonu ve bağlantı kurma stratejileri.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Mobil Uygulama Geliştirme",
+          description:
+            "iOS ve Android platformları için modern, kullanıcı dostu mobil uygulamalar. React Native ve Flutter teknolojileri ile çapraz platform çözümler.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "UI/UX Tasarım",
+          description:
+            "Kullanıcı deneyimini ön planda tutan, modern ve etkileyici arayüz tasarımları. Figma ve Adobe XD ile profesyonel tasarım süreçleri.",
         },
       },
     ],
   },
+  slogan: "Dijital dünyada iz bırakın",
+  description:
+    "İstanbul Sancaktepe'den tüm Türkiye'ye profesyonel web tasarım, e-ticaret, mobil uygulama ve SEO hizmetleri sunuyoruz. Modern teknolojiler ve yaratıcı çözümlerle işinizi dijital dünyada bir adım öne taşıyoruz.",
+  keywords:
+    "web tasarım, e-ticaret, seo, mobil uygulama, ui/ux tasarım, istanbul, sancaktepe",
+  numberOfEmployees: {
+    "@type": "QuantitativeValue",
+    value: "5",
+  },
+  vatID: "TR12345678901",
 };
 
 export default function HomePage() {

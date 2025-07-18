@@ -6,6 +6,7 @@ import PortfolioSection from "./PortfolioSection";
 import TestimonialsSection from "./TestimonialsSection";
 import CTASection from "./CTASection";
 import ContactSection from "./ContactSection";
+import FAQ from "../ui/FAQ";
 
 const Home = () => {
   return (
@@ -13,6 +14,7 @@ const Home = () => {
       <HeroSection />
       <ServicesSection />
       <PortfolioSection />
+      <FAQ />
       <TestimonialsSection />
       <CTASection />
       <ContactSection />
